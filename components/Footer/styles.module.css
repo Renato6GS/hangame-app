@@ -3,8 +3,12 @@
   bottom: 15px;
   width: 100%;
   text-align: center;
+  font-family: Roboto, sans-serif;
+  font-weight: bold;
 }
 
 .link {
-  color: var(--link-color)
+  color: var(--link-color);
+  font-family: Roboto, sans-serif;
+  font-weight: bold;
 }
