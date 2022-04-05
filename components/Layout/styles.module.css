@@ -1,6 +1,6 @@
 .mainContainer {
   background-color: var(--white);
-  height: 95vh;
+  min-height: 95vh;
   margin: 3vh;
   border-radius: 40px;
 

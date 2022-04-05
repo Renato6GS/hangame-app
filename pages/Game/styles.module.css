@@ -104,7 +104,6 @@
 .wordContainer {
   width: 100%;
   padding: 20px 8%;
-  /* background-color: peru; */
   display: grid;
   grid-template-columns: repeat(auto, 1fr);
   grid-template-rows: 1;
@@ -118,7 +117,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: red; */
 }
 
 .wordLetter {
@@ -127,5 +125,33 @@
   margin-bottom: 8px;
   width: 100%;
   text-align: center;
-  /* color: transparent; */
+  font-size: 1.4rem;
+  font-family: Roboto, sans-serif;
+  font-weight: 700;
+}
+
+.containerLetters {
+  width: 100%;
+  padding: 8%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  grid-gap: 10px;
+}
+
+.letterContainer {
+  background-color: var(--primary-color);
+  border-radius: 11px;
+  border: solid var(--secondary-color) 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.letter {
+  font-size: 1.4rem;
+  font-family: Roboto, sans-serif;
+  font-weight: 700;
+  margin: 0;
+  margin: 15px 0;
 }
