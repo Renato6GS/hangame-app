@@ -1,9 +1,7 @@
 import Layout from 'components/Layout';
 import Head from 'next/head';
-import Link from 'next/link';
 import styles from '../styles/Home.module.css';
 
-import ArrowNarrowRight from 'components/icons/ArrowNarrowRight';
 import LayoutButton from 'components/LayoutButton';
 import LinkToPage from 'components/LinkToPage';
 
