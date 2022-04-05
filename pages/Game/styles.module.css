@@ -1,0 +1,131 @@
+.mainGameContainer {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+}
+
+.mainGame {
+  width: 280px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.base {
+  border-bottom: solid black 3px;
+  /* width: 20%; */
+  width: 70px;
+  position: absolute;
+  bottom: 20px;
+  left: 20px
+}
+
+.column {
+  border-left: solid black 3px;
+  height: 80%;
+  position: absolute;
+  bottom: 20px;
+  left: 53px;
+}
+
+.arm {
+  border-bottom: solid black 3px;
+  /* width: 35%; */
+  width: 120px;
+  position: absolute;
+  top: 37px;
+  left: 53px
+}
+
+.rope {
+  border-left: solid black 3px;
+  position: absolute;
+  height: 15%;
+  top: 37px;
+  left: 170px
+}
+
+.head {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: solid black 3px;
+  position: absolute;
+  top: 80px;
+  left: 158px;
+}
+
+.leftArm {
+  border-left: solid black 3px;
+  height: 50px;
+  position: absolute;
+  top: 102px;
+  left: 151px;
+  transform: rotate(45deg);
+}
+
+.rightArm {
+  border-left: solid black 3px;
+  height: 50px;
+  position: absolute;
+  top: 102px;
+  left: 190px;
+  transform: rotate(-45deg);
+}
+
+.body {
+  border-left: solid black 3px;
+  height: 80px;
+  position: absolute;
+  top: 110px;
+  left: 171px;
+}
+
+.leftLeg {
+  border-left: solid black 3px;
+  height: 50px;
+  position: absolute;
+  top: 180px;
+  left: 153px;
+  transform: rotate(45deg);
+}
+
+.rightLeg {
+  border-left: solid black 3px;
+  height: 50px;
+  position: absolute;
+  top: 180px;
+  left: 188px;
+  transform: rotate(-45deg);
+}
+
+.wordContainer {
+  width: 100%;
+  padding: 20px 8%;
+  /* background-color: peru; */
+  display: grid;
+  grid-template-columns: repeat(auto, 1fr);
+  grid-template-rows: 1;
+  grid-gap: 10px;
+}
+
+.line {
+  border-bottom: solid 3px black;
+  grid-column: 1fr;
+  grid-row: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: red; */
+}
+
+.wordLetter {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 8px;
+  width: 100%;
+  text-align: center;
+  /* color: transparent; */
+}
