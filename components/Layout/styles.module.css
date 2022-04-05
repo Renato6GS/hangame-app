@@ -1,0 +1,15 @@
+.mainContainer {
+  background-color: var(--white);
+  height: 95vh;
+  margin: 3vh;
+  border-radius: 40px;
+
+  position: relative;
+}
+
+.containerLogo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1rem;
+}
