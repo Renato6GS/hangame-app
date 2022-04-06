@@ -11,9 +11,9 @@ export default function OnePlayer() {
       <h2 className={styles.title}>Seleccione una dificultad</h2>
 
       <LayoutButton>
-        <LinkToPage contain='Fácil' href='/Game'></LinkToPage>
-        <LinkToPage contain='Medio' href='/Game'></LinkToPage>
-        <LinkToPage contain='Difícil' href='/Game'></LinkToPage>
+        <LinkToPage contain='Fácil' href='/Game/easy'></LinkToPage>
+        <LinkToPage contain='Medio' href='/Game/medium'></LinkToPage>
+        <LinkToPage contain='Difícil' href='/Game/hard'></LinkToPage>
       </LayoutButton>
     </Layout>
   );

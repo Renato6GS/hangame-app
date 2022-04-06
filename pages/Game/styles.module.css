@@ -133,10 +133,11 @@
 .containerLetters {
   width: 100%;
   padding: 8%;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: auto;
-  grid-gap: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .letterContainer {
@@ -146,12 +147,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
+  width: 22%;
 
-.letter {
   font-size: 1.4rem;
   font-family: Roboto, sans-serif;
   font-weight: 700;
   margin: 0;
-  margin: 15px 0;
+  padding: 15px 0;
+}
+
+.desButton {
+  background-color: red;
 }
