@@ -9,6 +9,18 @@ import ButtonContext from 'context/buttonContext';
 
 const MySwal = withReactContent(Swal);
 
+const Toast = Swal.mixin({
+  toast: true,
+  position: 'bottom',
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener('mouseenter', Swal.stopTimer);
+    toast.addEventListener('mouseleave', Swal.resumeTimer);
+  },
+});
+
 export default function ButtonLetter({ letter, word }) {
   const [deactivateButton, setDeactivateButton] = useState(false);
   const { wordState, setWordState, tries, setTries } = useContext(ButtonContext);
@@ -19,16 +31,32 @@ export default function ButtonLetter({ letter, word }) {
     let found = false;
 
     word.forEach((letter, index) => {
-      if (letter === value || letter.normalize('NFD').replace(/\p{Diacritic}/gu, '') === value) {
+      if (letter === value) {
         found = true;
         wordString[index] = value;
       }
+      if (letter.normalize('NFD').replace(/\p{Diacritic}/gu, '') === value) {
+        found = true;
+        wordString[index] = letter;
+      }
     });
 
-    if (found) setWordState([...wordString]);
-    else setTries((tries) => tries - 1);
+    if (found) {
+      setWordState([...wordString]);
+      Toast.fire({
+        icon: 'success',
+        title: 'Has acertado',
+      });
+    } else {
+      setTries((tries) => tries - 1);
+      Toast.fire({
+        icon: 'error',
+        title: 'Te has equivocado',
+      });
+    }
 
     if (wordState.join('') === word.join('')) showWinModal();
+    else if (tries === 0 && !found) showLoseModal();
   };
 
   const showLoseModal = () => {
@@ -56,7 +84,6 @@ export default function ButtonLetter({ letter, word }) {
     const { value } = e.target;
     evaluateLetter({ value });
     setDeactivateButton(true);
-    if (tries === 0) showLoseModal();
   };
 
   return (
