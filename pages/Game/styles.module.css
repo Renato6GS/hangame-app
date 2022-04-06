@@ -140,22 +140,10 @@
   gap: 10px;
 }
 
-.letterContainer {
-  background-color: var(--primary-color);
-  border-radius: 11px;
-  border: solid var(--secondary-color) 3px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 22%;
-
-  font-size: 1.4rem;
-  font-family: Roboto, sans-serif;
-  font-weight: 700;
-  margin: 0;
-  padding: 15px 0;
+.lostHead {
+  border: solid red 3px;
 }
 
-.desButton {
-  background-color: red;
+.lostLeftArm, .lostRigthArm, .lostLeftLeg, .lostRightLeg, .lostBody {
+  border-left: solid red 3px;
 }
