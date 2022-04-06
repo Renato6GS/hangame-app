@@ -40,7 +40,7 @@ export default function Game({ word = [] }) {
   const { wordState, setWordState, tries, setTries } = useContext(ButtonContext);
 
   useEffect(function () {
-    setWordState(word.map((w) => ' '));
+    setWordState(word.map(() => ' '));
     setTries(5);
     console.log(word);
   }, []);
