@@ -133,25 +133,17 @@
 .containerLetters {
   width: 100%;
   padding: 8%;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: auto;
-  grid-gap: 10px;
-}
-
-.letterContainer {
-  background-color: var(--primary-color);
-  border-radius: 11px;
-  border: solid var(--secondary-color) 3px;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-.letter {
-  font-size: 1.4rem;
-  font-family: Roboto, sans-serif;
-  font-weight: 700;
-  margin: 0;
-  margin: 15px 0;
+.lostHead {
+  border: solid red 3px;
+}
+
+.lostLeftArm, .lostRigthArm, .lostLeftLeg, .lostRightLeg, .lostBody {
+  border-left: solid red 3px;
 }
