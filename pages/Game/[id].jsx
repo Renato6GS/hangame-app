@@ -5,6 +5,7 @@ import ButtonContext from 'context/buttonContext';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import { useRouter } from 'next/router';
+import CryptoJS from 'crypto-js';
 
 import styles from './styles.module.css';
 import ButtonLetter from 'components/ButtonLetter';
@@ -122,8 +123,12 @@ export async function getServerSideProps({ params }) {
   const LANGUAGE = 'es';
 
   if (id.startsWith('O')) {
-    const word = id.slice(1).toUpperCase();
-    wordArray.push(...word);
+    const word = id.slice(1);
+    const decode = decodeURIComponent(word);
+    const decryptedData = CryptoJS.AES.decrypt(decode, 'secret').toString(CryptoJS.enc.Utf8);
+    const w = decryptedData.toUpperCase();
+
+    wordArray.push(...w);
   } else {
     try {
       const GET_WORD = process.env.GET_WORD;

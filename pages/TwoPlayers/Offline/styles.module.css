@@ -29,3 +29,23 @@
   font-weight: 300;
   font-size: 1rem;
 }
+
+
+.anchorContainer {
+  width: 50%;
+  border-radius: 24px;
+  background-color: var(--primary-color);
+  padding: 22px 18px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.link {
+  color: var(--secondary-color);
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
