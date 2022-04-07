@@ -1,0 +1,51 @@
+.title {
+  margin: 8%;
+  margin-top: 50px;
+  font-weight: 300;
+  font-size: 1.25rem;
+  line-height: 1.7rem;
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.input {
+  width: 84%;
+  padding: 1.2rem 1.5rem;
+  border: var(--link-color) solid 1px;
+  border-radius: 24px;
+  outline: none;
+  margin: 20px 0 10px;
+}
+
+.input::placeholder {
+  font-family: Roboto, sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
+}
+
+
+.anchorContainer {
+  width: 50%;
+  border-radius: 24px;
+  background-color: var(--primary-color);
+  padding: 22px 18px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.link {
+  color: var(--secondary-color);
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}

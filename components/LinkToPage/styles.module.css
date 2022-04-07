@@ -1,5 +1,5 @@
 .anchorContainer {
-  width: 100%;
+  width: 50%;
   border-radius: 24px;
   background-color: var(--primary-color);
   padding: 22px 18px 22px;
@@ -12,4 +12,13 @@
   color: var(--secondary-color);
   font-family: Roboto, sans-serif;
   font-weight: 400;
+}
+
+.positionCenter {
+  width: 100%;
+}
+
+.positionRigth {
+  width: 60%;
+  align-self: flex-end;
 }

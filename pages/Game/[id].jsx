@@ -5,6 +5,7 @@ import ButtonContext from 'context/buttonContext';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import { useRouter } from 'next/router';
+import CryptoJS from 'crypto-js';
 
 import styles from './styles.module.css';
 import ButtonLetter from 'components/ButtonLetter';
@@ -117,21 +118,26 @@ export default function Game({ word = [] }) {
 
 export async function getServerSideProps({ params }) {
   const { id } = params;
-
   let wordArray = [];
-  try {
-    // const response = await fetch(`http://127.0.0.1:5000/get_word/${id}_difficulty&es`);
+  const API = process.env.API;
+  const LANGUAGE = 'es';
 
-    const API = process.env.API;
-    const GET_WORD = process.env.GET_WORD;
-    const LANGUAGE = 'es';
+  if (id.startsWith('O')) {
+    const word = id.slice(1);
+    const decode = decodeURIComponent(word);
+    const decryptedData = CryptoJS.AES.decrypt(decode, 'secret').toString(CryptoJS.enc.Utf8);
+    const w = decryptedData.toUpperCase();
 
-    const response = await fetch(`${API}${GET_WORD}${id}_difficulty&${LANGUAGE}`);
-
-    const { word } = await response.json();
-    wordArray.push(...word);
-  } catch (error) {
-    console.error(error);
+    wordArray.push(...w);
+  } else {
+    try {
+      const GET_WORD = process.env.GET_WORD;
+      const response = await fetch(`${API}${GET_WORD}${id}_difficulty&${LANGUAGE}`);
+      const { word } = await response.json();
+      wordArray.push(...word);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   console.log('word', wordArray);
