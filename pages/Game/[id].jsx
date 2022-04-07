@@ -117,21 +117,22 @@ export default function Game({ word = [] }) {
 
 export async function getServerSideProps({ params }) {
   const { id } = params;
-
   let wordArray = [];
-  try {
-    // const response = await fetch(`http://127.0.0.1:5000/get_word/${id}_difficulty&es`);
+  const API = process.env.API;
+  const LANGUAGE = 'es';
 
-    const API = process.env.API;
-    const GET_WORD = process.env.GET_WORD;
-    const LANGUAGE = 'es';
-
-    const response = await fetch(`${API}${GET_WORD}${id}_difficulty&${LANGUAGE}`);
-
-    const { word } = await response.json();
+  if (id.startsWith('O')) {
+    const word = id.slice(1).toUpperCase();
     wordArray.push(...word);
-  } catch (error) {
-    console.error(error);
+  } else {
+    try {
+      const GET_WORD = process.env.GET_WORD;
+      const response = await fetch(`${API}${GET_WORD}${id}_difficulty&${LANGUAGE}`);
+      const { word } = await response.json();
+      wordArray.push(...word);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   console.log('word', wordArray);
