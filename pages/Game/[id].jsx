@@ -2,6 +2,9 @@ import Layout from 'components/Layout';
 import React, { useContext, useEffect } from 'react';
 import Head from 'next/head';
 import ButtonContext from 'context/buttonContext';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+import { useRouter } from 'next/router';
 
 import styles from './styles.module.css';
 import ButtonLetter from 'components/ButtonLetter';
@@ -37,8 +40,22 @@ const ALPHABET = [
 ];
 
 export default function Game({ word = [] }) {
-  const { wordState, setWordState, tries, setTries } = useContext(ButtonContext);
+  const router = useRouter();
 
+  useEffect(function () {
+    if (word.length === 0) {
+      const MySwal = withReactContent(Swal);
+      MySwal.fire({
+        icon: 'error',
+        title: 'Error de servidor...',
+        text: 'No se ha podido recuperar la palabra del servidor. Intentelo más tarde...',
+      }).then(() => {
+        router.push('/');
+      });
+    }
+  }, []);
+
+  const { wordState, setWordState, tries, setTries } = useContext(ButtonContext);
   useEffect(function () {
     setWordState(word.map(() => ' '));
     setTries(5);
@@ -103,7 +120,14 @@ export async function getServerSideProps({ params }) {
 
   let wordArray = [];
   try {
-    const response = await fetch(`http://127.0.0.1:5000/get_word/${id}_difficulty&es`);
+    // const response = await fetch(`http://127.0.0.1:5000/get_word/${id}_difficulty&es`);
+
+    const API = process.env.API;
+    const GET_WORD = process.env.GET_WORD;
+    const LANGUAGE = 'es';
+
+    const response = await fetch(`${API}${GET_WORD}${id}_difficulty&${LANGUAGE}`);
+
     const { word } = await response.json();
     wordArray.push(...word);
   } catch (error) {

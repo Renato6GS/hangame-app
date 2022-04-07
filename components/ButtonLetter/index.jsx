@@ -7,8 +7,6 @@ import { useRouter } from 'next/router';
 import styles from './styles.module.css';
 import ButtonContext from 'context/buttonContext';
 
-const MySwal = withReactContent(Swal);
-
 const Toast = Swal.mixin({
   toast: true,
   position: 'bottom',
@@ -60,6 +58,7 @@ export default function ButtonLetter({ letter, word }) {
   };
 
   const showLoseModal = () => {
+    const MySwal = withReactContent(Swal);
     MySwal.fire({
       icon: 'error',
       title: 'Has perdido...',
@@ -71,6 +70,7 @@ export default function ButtonLetter({ letter, word }) {
 
   const showWinModal = () => {
     confetti();
+    const MySwal = withReactContent(Swal);
     MySwal.fire({
       icon: 'success',
       title: 'Has ganado',
