@@ -37,5 +37,6 @@
   "CHANGE_LANGUAGE": "Cambiar idioma",
   "SELECT_LANGUAGE": "Seleccione un idioma",
   "ENGLISH": "Inglés",
-  "SPANISH": "Español"
+  "SPANISH": "Español",
+  "ERROR_ONLINE": "No se pudo encontrar la palabra guardada."
 }
