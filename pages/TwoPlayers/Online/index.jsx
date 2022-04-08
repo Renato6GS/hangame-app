@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Head from 'next/head';
 
 import styles from './styles.module.css';
 import { validateCharacters, validateLeng } from 'utils/inputValidations';
@@ -61,6 +62,11 @@ export default function Online({ API, CREATE_ROOM }) {
 
   return (
     <>
+      <Head>
+        <title>Hangame - Dos jugadores</title>
+        <meta name='description' content='Hangman game two players online' />
+        <link rel='icon' href='/logo.ico' />
+      </Head>
       {loading && <Loader />}
       <Layout titleHeader='Dos jugadores' href='/TwoPlayers'>
         <h2 className={styles.title}>

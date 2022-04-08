@@ -2,9 +2,10 @@
   background-color: var(--white);
   min-height: 640px;
   height: 95vh;
-  margin: 3vh;
+  margin: 3vh auto;
   border-radius: 40px;
   position: relative;
+  max-width: 500px;
 }
 
 .containerLogo {

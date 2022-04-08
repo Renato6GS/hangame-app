@@ -6,12 +6,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  cursor: pointer;
 }
 
 .link {
   color: var(--secondary-color);
   font-family: Roboto, sans-serif;
   font-weight: 400;
+  cursor: pointer
 }
 
 .positionCenter {

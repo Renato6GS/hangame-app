@@ -38,9 +38,10 @@ export default function Game({ word = [], title }) {
     <>
       <Head>
         <title>Hangame - Game</title>
-        <link rel='icon' href='/favicon.ico' />
+        <link rel='icon' href='/logo.ico' />
         <link rel='preload' href='/static/font/Roboto-Bold.ttf' as='font' crossOrigin='' />
         <link rel='preload' href='/static/font/Roboto-Regular.ttf' as='font' crossOrigin='' />
+        <meta name='description' content='Hangman game two players online' />
       </Head>
 
       <Layout titleHeader={title} largeScreen={true}>

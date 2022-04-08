@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import CryptoJS from 'crypto-js';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 
 import styles from './styles.module.css';
 import Layout from 'components/Layout';
@@ -30,27 +31,34 @@ export default function Offline() {
   };
 
   return (
-    <Layout titleHeader='Dos jugadores' href='/TwoPlayers'>
-      <h2 className={styles.title}>
-        Escriba una palabra. No incluya espacios, ni número ni caracteres especiales, por favor.
-      </h2>
+    <>
+      <Head>
+        <title>Hangame - Dos jugadores</title>
+        <meta name='description' content='Hangman game two players offline' />
+        <link rel='icon' href='/logo.ico' />
+      </Head>
+      <Layout titleHeader='Dos jugadores' href='/TwoPlayers'>
+        <h2 className={styles.title}>
+          Escriba una palabra. No incluya espacios, ni número ni caracteres especiales, por favor.
+        </h2>
 
-      <form className={styles.form} onSubmit={handleSubmit}>
-        <input
-          className={styles.input}
-          onChange={handleChange}
-          type='text'
-          name='inputWord'
-          id='inputWord'
-          placeholder='Ej.: Autopista'
-          value={keyword}
-          autoComplete='off'
-        />
-        <button className={styles.button} type='submit'>
-          <span className={styles.buttonContent}>Empezar</span>
-          <ArrowNarrowRight />
-        </button>
-      </form>
-    </Layout>
+        <form className={styles.form} onSubmit={handleSubmit}>
+          <input
+            className={styles.input}
+            onChange={handleChange}
+            type='text'
+            name='inputWord'
+            id='inputWord'
+            placeholder='Ej.: Autopista'
+            value={keyword}
+            autoComplete='off'
+          />
+          <button className={styles.button} type='submit'>
+            <span className={styles.buttonContent}>Empezar</span>
+            <ArrowNarrowRight />
+          </button>
+        </form>
+      </Layout>
+    </>
   );
 }
