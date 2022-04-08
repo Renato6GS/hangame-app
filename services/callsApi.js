@@ -2,9 +2,9 @@ import CryptoJS from 'crypto-js';
 
 const API = process.env.API;
 const LANGUAGE = 'es';
-const wordArray = [];
 
 export const offlineService = ({ id }) => {
+  const wordArray = [];
   const word = id.slice(1);
   const decode = decodeURIComponent(word);
   const decryptedData = CryptoJS.AES.decrypt(decode, 'secret').toString(CryptoJS.enc.Utf8);
@@ -14,6 +14,7 @@ export const offlineService = ({ id }) => {
 };
 
 export const onlineService = async ({ id }) => {
+  const wordArray = [];
   const getId = id.slice(1);
   try {
     const GET_AND_DELETE = process.env.GET_AND_DELETE;
@@ -30,6 +31,7 @@ export const onlineService = async ({ id }) => {
 };
 
 export const localMultiplayerService = async ({ id }) => {
+  const wordArray = [];
   try {
     const GET_WORD = process.env.GET_WORD;
     const response = await fetch(`${API}${GET_WORD}${id}_difficulty&${LANGUAGE}`);
