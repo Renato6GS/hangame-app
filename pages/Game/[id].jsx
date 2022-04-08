@@ -12,11 +12,10 @@ import { ALPHABET } from 'constants/alphabet';
 import { offlineService, onlineService, localMultiplayerService } from 'services/callsApi';
 import { useI18N } from 'context/i18n';
 
-export default function Game({ word = [], title = 'a' }) {
+export default function Game({ word = [], title = 'a', id }) {
+  const { wordState, setWordState, tries, setTries } = useContext(ButtonContext);
   const router = useRouter();
   const { t } = useI18N();
-
-  console.log(title);
 
   useEffect(function () {
     if (word.length === 0) {
@@ -31,12 +30,28 @@ export default function Game({ word = [], title = 'a' }) {
     }
   }, []);
 
-  const { wordState, setWordState, tries, setTries } = useContext(ButtonContext);
-  useEffect(function () {
-    setWordState(word.map(() => ' '));
-    setTries(5);
-    console.log(word);
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        if (id.startsWith('N')) {
+          const w = await onlineService({ id });
+          setWordState(w.map(() => ' '));
+        } else {
+          setWordState(word.map(() => ' '));
+        }
+      } catch (error) {
+        console.error(error);
+        router.push('/');
+      }
+      setTries(5);
+    }
+    fetchData();
   }, []);
+
+  // useEffect(function () {
+  //   setWordState(word.map(() => ' '));
+  //   setTries(5);
+  // }, []);
 
   return (
     <>
@@ -103,15 +118,17 @@ export async function getServerSideProps(context) {
 
   if (id.startsWith('O')) {
     wordArray = offlineService({ id });
-  } else if (id.startsWith('N') && typeof window === 'undefined') {
-    console.log('window: ', typeof window);
-    wordArray = await onlineService({ id });
   } else {
     wordArray = await localMultiplayerService({ id, locale });
     title = 'ONE_PLAYER_MAIN_MENU';
   }
 
+  // else if (id.startsWith('N') && typeof window === 'undefined') {
+  //   console.log('window: ', typeof window);
+  //   wordArray = await onlineService({ id });
+  // }
+
   return {
-    props: { word: wordArray, title },
+    props: { word: wordArray, title, id },
   };
 }
