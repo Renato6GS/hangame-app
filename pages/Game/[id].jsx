@@ -40,12 +40,19 @@ export default function Game({ word = [], title = 'a', id }) {
           setWordState(word.map(() => ' '));
         }
       } catch (error) {
-        console.error(error);
+        const MySwal = withReactContent(Swal);
+        MySwal.fire({
+          icon: 'error',
+          title: t('SERVER_ERROR_MODAL'),
+          text: t('ERROR_ONLINE'),
+        }).then(() => {
+          router.push('/');
+        });
         router.push('/');
       }
-      setTries(5);
     }
     fetchData();
+    setTries(5);
   }, []);
 
   // useEffect(function () {
@@ -118,6 +125,8 @@ export async function getServerSideProps(context) {
 
   if (id.startsWith('O')) {
     wordArray = offlineService({ id });
+  } else if (id.startsWith('N')) {
+    wordArray = ['it works'];
   } else {
     wordArray = await localMultiplayerService({ id, locale });
     title = 'ONE_PLAYER_MAIN_MENU';

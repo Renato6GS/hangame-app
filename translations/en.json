@@ -37,5 +37,6 @@
   "CHANGE_LANGUAGE": "Change language",
   "SELECT_LANGUAGE": "Select a language",
   "ENGLISH": "English",
-  "SPANISH": "Spanish"
+  "SPANISH": "Spanish",
+  "ERROR_ONLINE": "Could not find saved word."
 }
