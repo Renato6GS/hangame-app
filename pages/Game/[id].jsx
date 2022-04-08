@@ -99,6 +99,7 @@ export async function getServerSideProps({ params }) {
     wordArray = await onlineService({ id });
   } else {
     wordArray = await localMultiplayerService({ id });
+    title = 'Un jugador';
   }
 
   console.log('word', wordArray);

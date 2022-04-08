@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Hangame - Menu</title>
+        {/* <title>Hangame - Menu</title> */}
         <meta name='description' content='The best Hangman game' />
         <link rel='icon' href='/logo.ico' />
         <link rel='preload' href='/static/font/Roboto-Bold.ttf' as='font' crossOrigin='' />
