@@ -9,38 +9,9 @@ import CryptoJS from 'crypto-js';
 
 import styles from './styles.module.css';
 import ButtonLetter from 'components/ButtonLetter';
+import { ALPHABET } from 'constants/alphabet';
 
-const ALPHABET = [
-  'A',
-  'B',
-  'C',
-  'D',
-  'E',
-  'F',
-  'G',
-  'H',
-  'I',
-  'J',
-  'K',
-  'L',
-  'M',
-  'N',
-  'Ñ',
-  'O',
-  'P',
-  'Q',
-  'R',
-  'S',
-  'T',
-  'U',
-  'V',
-  'W',
-  'X',
-  'Y',
-  'Z',
-];
-
-export default function Game({ word = [] }) {
+export default function Game({ word = [], title }) {
   const router = useRouter();
 
   useEffect(function () {
@@ -72,7 +43,7 @@ export default function Game({ word = [] }) {
         <link rel='preload' href='/static/font/Roboto-Regular.ttf' as='font' crossOrigin='' />
       </Head>
 
-      <Layout titleHeader='Unjugador' href='/OnePlayer'>
+      <Layout titleHeader={title} href='/OnePlayer' largeScreen={true}>
         <div>
           <h2 className={styles.title}>Adivine la palabra</h2>
         </div>
@@ -121,20 +92,34 @@ export async function getServerSideProps({ params }) {
   let wordArray = [];
   const API = process.env.API;
   const LANGUAGE = 'es';
+  let title = 'Dos jugadores';
 
   if (id.startsWith('O')) {
     const word = id.slice(1);
     const decode = decodeURIComponent(word);
     const decryptedData = CryptoJS.AES.decrypt(decode, 'secret').toString(CryptoJS.enc.Utf8);
     const w = decryptedData.toUpperCase();
-
     wordArray.push(...w);
+  } else if (id.startsWith('N')) {
+    const getId = id.slice(1);
+    try {
+      const GET_AND_DELETE = process.env.GET_AND_DELETE;
+      const response = await fetch(`${API}${GET_AND_DELETE}${getId}`, {
+        method: 'DELETE',
+      });
+      let { word } = await response.json();
+      word = word.toUpperCase();
+      wordArray.push(...word);
+    } catch (error) {
+      console.error(error);
+    }
   } else {
     try {
       const GET_WORD = process.env.GET_WORD;
       const response = await fetch(`${API}${GET_WORD}${id}_difficulty&${LANGUAGE}`);
       const { word } = await response.json();
       wordArray.push(...word);
+      title = 'Un jugador';
     } catch (error) {
       console.error(error);
     }
@@ -142,14 +127,6 @@ export async function getServerSideProps({ params }) {
 
   console.log('word', wordArray);
   return {
-    props: { word: wordArray },
+    props: { word: wordArray, title },
   };
 }
-
-// 1. Game que sea una ruta dinámica, en donde puede recibir la dificultad por url
-// /game/facil, /game/medium/, /game/hard, y que con ese param consulta a la api y obtenga una palabra.
-
-// 2. Si es que es para dos jugadores, el game debe incluir una id en la url online
-// /game/3828381 y con esa ID se obtenga la palbra dentro de la base de datos
-
-// 3. Si es offline, que la palabra se pase por prop y la url deberá de ser /game/offline

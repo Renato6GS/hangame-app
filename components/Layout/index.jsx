@@ -5,10 +5,17 @@ import Image from 'next/image';
 
 import styles from './styles.module.css';
 
-export default function Layout({ children, isMainMenu = false, titleHeader = '', footer = false, href = '/' }) {
+export default function Layout({
+  children,
+  isMainMenu = false,
+  titleHeader = '',
+  footer = false,
+  href = '/',
+  largeScreen = false,
+}) {
   return (
     <>
-      <main className={styles.mainContainer}>
+      <main className={`${styles.mainContainer} ${largeScreen && styles.largeScreen} `}>
         {titleHeader && <Header title={titleHeader} href={href} />}
         {isMainMenu && (
           <div className={styles.containerLogo}>
