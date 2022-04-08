@@ -3,6 +3,7 @@ import { showModal } from './modals';
 const REG = /^[a-zA-ZÁáÉéÍíÓóÚúñÑ]+$/g;
 
 export const validateCharacters = ({ keyword }) => {
+  REG.lastIndex = 0;
   if (!REG.test(keyword)) {
     showModal({
       type: 'error',

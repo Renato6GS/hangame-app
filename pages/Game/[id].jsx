@@ -5,11 +5,11 @@ import ButtonContext from 'context/buttonContext';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import { useRouter } from 'next/router';
-import CryptoJS from 'crypto-js';
 
 import styles from './styles.module.css';
 import ButtonLetter from 'components/ButtonLetter';
 import { ALPHABET } from 'constants/alphabet';
+import { offlineService, onlineService, localMultiplayerService } from 'services/callsApi';
 
 export default function Game({ word = [], title }) {
   const router = useRouter();
@@ -43,7 +43,7 @@ export default function Game({ word = [], title }) {
         <link rel='preload' href='/static/font/Roboto-Regular.ttf' as='font' crossOrigin='' />
       </Head>
 
-      <Layout titleHeader={title} href='/OnePlayer' largeScreen={true}>
+      <Layout titleHeader={title} largeScreen={true}>
         <div>
           <h2 className={styles.title}>Adivine la palabra</h2>
         </div>
@@ -90,39 +90,14 @@ export default function Game({ word = [], title }) {
 export async function getServerSideProps({ params }) {
   const { id } = params;
   let wordArray = [];
-  const API = process.env.API;
-  const LANGUAGE = 'es';
   let title = 'Dos jugadores';
 
   if (id.startsWith('O')) {
-    const word = id.slice(1);
-    const decode = decodeURIComponent(word);
-    const decryptedData = CryptoJS.AES.decrypt(decode, 'secret').toString(CryptoJS.enc.Utf8);
-    const w = decryptedData.toUpperCase();
-    wordArray.push(...w);
+    wordArray = offlineService({ id });
   } else if (id.startsWith('N')) {
-    const getId = id.slice(1);
-    try {
-      const GET_AND_DELETE = process.env.GET_AND_DELETE;
-      const response = await fetch(`${API}${GET_AND_DELETE}${getId}`, {
-        method: 'DELETE',
-      });
-      let { word } = await response.json();
-      word = word.toUpperCase();
-      wordArray.push(...word);
-    } catch (error) {
-      console.error(error);
-    }
+    wordArray = await onlineService({ id });
   } else {
-    try {
-      const GET_WORD = process.env.GET_WORD;
-      const response = await fetch(`${API}${GET_WORD}${id}_difficulty&${LANGUAGE}`);
-      const { word } = await response.json();
-      wordArray.push(...word);
-      title = 'Un jugador';
-    } catch (error) {
-      console.error(error);
-    }
+    wordArray = await localMultiplayerService({ id });
   }
 
   console.log('word', wordArray);

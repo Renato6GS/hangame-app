@@ -16,9 +16,9 @@ export default function Online({ API, CREATE_ROOM }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
     if (validateLeng({ keyword })) return;
     if (validateCharacters({ keyword })) return;
+    setLoading(true);
 
     try {
       const response = await fetch(`${API}${CREATE_ROOM}${keyword}`);
