@@ -1,7 +1,6 @@
 import CryptoJS from 'crypto-js';
 
 const API = process.env.API;
-const LANGUAGE = 'es';
 
 export const offlineService = ({ id }) => {
   const wordArray = [];
@@ -30,11 +29,11 @@ export const onlineService = async ({ id }) => {
   return wordArray;
 };
 
-export const localMultiplayerService = async ({ id }) => {
+export const localMultiplayerService = async ({ id, locale }) => {
   const wordArray = [];
   try {
     const GET_WORD = process.env.GET_WORD;
-    const response = await fetch(`${API}${GET_WORD}${id}_difficulty&${LANGUAGE}`);
+    const response = await fetch(`${API}${GET_WORD}${id}_difficulty&${locale}`);
     const { word } = await response.json();
     wordArray.push(...word);
   } catch (error) {

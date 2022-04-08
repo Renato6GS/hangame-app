@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 
 import styles from './styles.module.css';
 import ButtonContext from 'context/buttonContext';
+import { useI18N } from 'context/i18n';
 
 const Toast = Swal.mixin({
   toast: true,
@@ -23,6 +24,7 @@ export default function ButtonLetter({ letter, word }) {
   const [deactivateButton, setDeactivateButton] = useState(false);
   const { wordState, setWordState, tries, setTries } = useContext(ButtonContext);
   const router = useRouter();
+  const { t } = useI18N();
 
   const evaluateLetter = ({ value }) => {
     const wordString = wordState;
@@ -43,13 +45,13 @@ export default function ButtonLetter({ letter, word }) {
       setWordState([...wordString]);
       Toast.fire({
         icon: 'success',
-        title: 'Has acertado',
+        title: t('YOU_R_RIGHT'),
       });
     } else {
       setTries((tries) => tries - 1);
       Toast.fire({
         icon: 'error',
-        title: 'Te has equivocado',
+        title: t('YOU_R_WRONG'),
       });
     }
 
@@ -61,8 +63,8 @@ export default function ButtonLetter({ letter, word }) {
     const MySwal = withReactContent(Swal);
     MySwal.fire({
       icon: 'error',
-      title: 'Has perdido...',
-      text: '¡Más suerte a la próxima!',
+      title: t('GAME_OVER'),
+      text: t('BETTER_LUCK'),
     }).then(() => {
       router.push('/');
     });
@@ -73,8 +75,8 @@ export default function ButtonLetter({ letter, word }) {
     const MySwal = withReactContent(Swal);
     MySwal.fire({
       icon: 'success',
-      title: 'Has ganado',
-      text: '¡¡¡Felicidades!!!',
+      title: t('YOU_WON'),
+      text: t('CONGRATULATIONS'),
     }).then(() => {
       router.push('/');
     });
