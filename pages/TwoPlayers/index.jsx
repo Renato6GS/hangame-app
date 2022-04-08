@@ -12,7 +12,7 @@ export default function TwoPlayers() {
 
       <LayoutButton>
         <LinkToPage contain='Local' href='/TwoPlayers/Offline'></LinkToPage>
-        <LinkToPage contain='En línea' href='/TwoPlayers/Online/menu'></LinkToPage>
+        <LinkToPage contain='En línea' href='/TwoPlayers/Online'></LinkToPage>
       </LayoutButton>
     </Layout>
   );

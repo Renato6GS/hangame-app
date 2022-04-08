@@ -1,3 +1,11 @@
+.title {
+  margin: 0 8%;
+  margin-top: 50px;
+  font-weight: 300;
+  font-size: 1.25rem;
+  line-height: 1.7rem;
+}
+
 .mainGameContainer {
   width: 100%;
   height: 300px;

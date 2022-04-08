@@ -1,41 +1,16 @@
 import React, { useState } from 'react';
 import CryptoJS from 'crypto-js';
 import { useRouter } from 'next/router';
-import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content';
 
 import styles from './styles.module.css';
 import Layout from 'components/Layout';
 import ArrowNarrowRight from 'components/icons/ArrowNarrowRight';
+import { validateCharacters, validateLeng } from 'utils/inputValidations';
 
 export default function Offline() {
   const [keyword, setKeyword] = useState('');
   const [crypto, setCrypto] = useState('');
   const router = useRouter();
-  const REG = /^[a-zA-ZÁáÉéÍíÓóÚúñÑ]+$/g;
-  const MySwal = withReactContent(Swal);
-
-  const validateCharacters = ({ keyword }) => {
-    if (!REG.test(keyword)) {
-      MySwal.fire({
-        icon: 'error',
-        title: 'Palabra inválida',
-        text: 'Por favor ingrese una palabra sin espacios, sin números y sin caracteres especiales.',
-      });
-      return true;
-    }
-    return false;
-  };
-
-  const validateLeng = ({ keyword }) => {
-    if (keyword.length <= 14) return false;
-    MySwal.fire({
-      icon: 'error',
-      title: 'Palabra muy larga',
-      text: 'Por favor ingrese una palabra menor a 15 caracteres.',
-    });
-    return true;
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -69,11 +44,12 @@ export default function Offline() {
           id='inputWord'
           placeholder='Ej.: Autopista'
           value={keyword}
+          autoComplete='off'
         />
-        <div className={styles.anchorContainer}>
-          <input className={styles.link} type='submit' value='Enviar' />
+        <button className={styles.button} type='submit'>
+          <span className={styles.buttonContent}>Empezar</span>
           <ArrowNarrowRight />
-        </div>
+        </button>
       </form>
     </Layout>
   );

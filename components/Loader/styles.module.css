@@ -5,7 +5,7 @@
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0,0, .2);
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   z-index: 10;

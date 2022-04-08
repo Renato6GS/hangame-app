@@ -30,7 +30,6 @@
   font-size: 1rem;
 }
 
-
 .button {
   width: 50%;
   border-radius: 24px;
@@ -47,4 +46,29 @@
   color: var(--secondary-color);
   font-family: Roboto, sans-serif;
   font-weight: 400;
+}
+
+
+.linkContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8%;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.titleLink {
+  margin: 0;
+}
+
+.linkToShare {
+  overflow-wrap: break-word;
+  text-align: center;
+  color: var(--link-color);
+}
+
+.buttonLink {
+  align-self: flex-end;
 }
