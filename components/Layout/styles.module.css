@@ -2,7 +2,7 @@
   background-color: var(--white);
   min-height: 640px;
   height: 95vh;
-  margin: 3vh auto;
+  margin: 3vh;
   border-radius: 40px;
   position: relative;
   max-width: 500px;
@@ -17,4 +17,10 @@
 
 .largeScreen {
   height: auto;
+}
+
+@media (min-width: 550px) {
+  .mainContainer {
+    margin: 3vh auto;
+  }
 }
