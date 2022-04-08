@@ -103,7 +103,8 @@ export async function getServerSideProps(context) {
 
   if (id.startsWith('O')) {
     wordArray = offlineService({ id });
-  } else if (id.startsWith('N')) {
+  } else if (id.startsWith('N') && typeof window === 'undefined') {
+    console.log('window: ', typeof window);
     wordArray = await onlineService({ id });
   } else {
     wordArray = await localMultiplayerService({ id, locale });
