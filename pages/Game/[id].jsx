@@ -123,6 +123,9 @@ export async function getServerSideProps(context) {
   let wordArray = [];
   let title = 'TWO_PLAYER_MAIN_MENU';
 
+  console.log('El contexto:');
+  console.log(context);
+
   if (id.startsWith('O')) {
     wordArray = offlineService({ id });
   } else if (id.startsWith('N')) {
