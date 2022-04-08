@@ -2,25 +2,25 @@ import { showModal } from './modals';
 
 const REG = /^[a-zA-ZÁáÉéÍíÓóÚúñÑ]+$/g;
 
-export const validateCharacters = ({ keyword }) => {
+export const validateCharacters = ({ keyword, title, message }) => {
   REG.lastIndex = 0;
   if (!REG.test(keyword)) {
     showModal({
       type: 'error',
-      title: 'Palabra inválida',
-      message: 'Por favor ingrese una palabra sin espacios, sin números y sin caracteres especiales.',
+      title,
+      message,
     });
     return true;
   }
   return false;
 };
 
-export const validateLeng = ({ keyword }) => {
+export const validateLeng = ({ keyword, title, message }) => {
   if (keyword.length <= 14) return false;
   showModal({
     type: 'error',
-    title: 'Palabra muy larga',
-    message: 'Por favor ingrese una palabra menor a 15 caracteres.',
+    title,
+    message,
   });
   return true;
 };

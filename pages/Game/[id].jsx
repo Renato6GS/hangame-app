@@ -10,17 +10,21 @@ import styles from './styles.module.css';
 import ButtonLetter from 'components/ButtonLetter';
 import { ALPHABET } from 'constants/alphabet';
 import { offlineService, onlineService, localMultiplayerService } from 'services/callsApi';
+import { useI18N } from 'context/i18n';
 
-export default function Game({ word = [], title }) {
+export default function Game({ word = [], title = 'a' }) {
   const router = useRouter();
+  const { t } = useI18N();
+
+  console.log(title);
 
   useEffect(function () {
     if (word.length === 0) {
       const MySwal = withReactContent(Swal);
       MySwal.fire({
         icon: 'error',
-        title: 'Error de servidor...',
-        text: 'No se ha podido recuperar la palabra del servidor. Intentelo más tarde...',
+        title: t('SERVER_ERROR_MODAL'),
+        text: t('TEXT_ERROR_MODAL'),
       }).then(() => {
         router.push('/');
       });
@@ -37,16 +41,19 @@ export default function Game({ word = [], title }) {
   return (
     <>
       <Head>
-        <title>Hangame - Game</title>
+        <title>{t('SEO_GAME')}</title>
         <link rel='icon' href='/logo.ico' />
         <link rel='preload' href='/static/font/Roboto-Bold.ttf' as='font' crossOrigin='' />
         <link rel='preload' href='/static/font/Roboto-Regular.ttf' as='font' crossOrigin='' />
         <meta name='description' content='Hangman game two players online' />
       </Head>
 
-      <Layout titleHeader={title} largeScreen={true}>
+      <Layout
+        // titleHeader={t(title === 'ONE_PLAYER_MAIN_MENU' ? 'TWO_PLAYER_MAIN_MENU' : 'ONE_PLAYER_MAIN_MENU')}
+        titleHeader={t(title === 'TWO_PLAYER_MAIN_MENU' ? 'TWO_PLAYER_MAIN_MENU' : 'ONE_PLAYER_MAIN_MENU')}
+        largeScreen={true}>
         <div>
-          <h2 className={styles.title}>Adivine la palabra</h2>
+          <h2 className={styles.title}>{t('GUESS_WORD')}</h2>
         </div>
 
         {/* PICTURE */}
@@ -88,21 +95,21 @@ export default function Game({ word = [], title }) {
   );
 }
 
-export async function getServerSideProps({ params }) {
+export async function getServerSideProps(context) {
+  const { params, locale } = context;
   const { id } = params;
   let wordArray = [];
-  let title = 'Dos jugadores';
+  let title = 'TWO_PLAYER_MAIN_MENU';
 
   if (id.startsWith('O')) {
     wordArray = offlineService({ id });
   } else if (id.startsWith('N')) {
     wordArray = await onlineService({ id });
   } else {
-    wordArray = await localMultiplayerService({ id });
-    title = 'Un jugador';
+    wordArray = await localMultiplayerService({ id, locale });
+    title = 'ONE_PLAYER_MAIN_MENU';
   }
 
-  console.log('word', wordArray);
   return {
     props: { word: wordArray, title },
   };

@@ -7,6 +7,7 @@ import Layout from 'components/Layout';
 import ArrowNarrowRight from 'components/icons/ArrowNarrowRight';
 import CopyIcon from 'components/icons/CopyIcon';
 import Loader from 'components/Loader';
+import { useI18N } from 'context/i18n';
 
 export default function Online({ API, CREATE_ROOM }) {
   const [keyword, setKeyword] = useState('');
@@ -14,6 +15,7 @@ export default function Online({ API, CREATE_ROOM }) {
   const [generateLink, setGenerateLink] = useState('empy');
   const [showLink, setShowLink] = useState(false);
   const [loading, setLoading] = useState(false);
+  const { t } = useI18N();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -63,15 +65,13 @@ export default function Online({ API, CREATE_ROOM }) {
   return (
     <>
       <Head>
-        <title>Hangame - Dos jugadores</title>
+        <title>{t('SEO_TWO_PLAYERS')}</title>
         <meta name='description' content='Hangman game two players online' />
         <link rel='icon' href='/logo.ico' />
       </Head>
       {loading && <Loader />}
-      <Layout titleHeader='Dos jugadores' href='/TwoPlayers'>
-        <h2 className={styles.title}>
-          Escriba tu propia palabra. No incluya espacios, ni número ni caracteres especiales, por favor.
-        </h2>
+      <Layout titleHeader={t('TWO_PLAYER_MAIN_MENU')} href='/TwoPlayers'>
+        <h2 className={styles.title}>{t('INSTRUCTIONS_MULTIPLAYER')}</h2>
 
         <form className={styles.form} onSubmit={handleSubmit}>
           <input
@@ -80,22 +80,22 @@ export default function Online({ API, CREATE_ROOM }) {
             type='text'
             name='inputWord'
             id='inputWord'
-            placeholder='Ej.: Autopista'
+            placeholder={t('EXAMPLE')}
             value={keyword}
             autoComplete='off'
           />
           <button className={styles.button} type='submit'>
-            <span className={styles.buttonContent}>Generar link</span>
+            <span className={styles.buttonContent}>{t('GENATE_LINK')}</span>
             <ArrowNarrowRight />
           </button>
         </form>
 
         {showLink && (
           <section className={styles.linkContainer}>
-            <h3 className={`${styles.title} ${styles.titleLink}`}>Comparte el siguiente link con tu amigo o amiga:</h3>
+            <h3 className={`${styles.title} ${styles.titleLink}`}>{t('SHARE_LINK')}:</h3>
             <h4 className={styles.linkToShare}>{generateLink}</h4>
             <button className={`${styles.button} ${styles.buttonLink}`} onClick={handleCopyClick}>
-              <span className={styles.copyLabel}>{isCopied ? '¡Copiado!' : 'Copiar'}</span>
+              <span className={styles.copyLabel}>{isCopied ? t('COPIED') : t('COPY')}</span>
               <CopyIcon />
             </button>
           </section>

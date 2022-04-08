@@ -7,17 +7,20 @@ import styles from './styles.module.css';
 import Layout from 'components/Layout';
 import ArrowNarrowRight from 'components/icons/ArrowNarrowRight';
 import { validateCharacters, validateLeng } from 'utils/inputValidations';
+import { useI18N } from 'context/i18n';
 
 export default function Offline() {
   const [keyword, setKeyword] = useState('');
   const [crypto, setCrypto] = useState('');
   const router = useRouter();
+  const { t } = useI18N();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (validateLeng({ keyword })) return;
-    if (validateCharacters({ keyword })) return;
+    if (validateLeng({ keyword, title: t('VALIDATE_CHAR_ERROR'), message: t('VALIDATE_LENG_ERROR_MESSAGE') })) return;
+    if (validateCharacters({ keyword, title: t('VALIDATE_CHAR_ERROR'), message: t('VALIDATE_CHAR_ERROR_MESSAGE') }))
+      return;
 
     router.push(`/Game/O${crypto}`);
   };
@@ -33,14 +36,12 @@ export default function Offline() {
   return (
     <>
       <Head>
-        <title>Hangame - Dos jugadores</title>
+        <title>{t('SEO_TWO_PLAYERS')}</title>
         <meta name='description' content='Hangman game two players offline' />
         <link rel='icon' href='/logo.ico' />
       </Head>
-      <Layout titleHeader='Dos jugadores' href='/TwoPlayers'>
-        <h2 className={styles.title}>
-          Escriba una palabra. No incluya espacios, ni número ni caracteres especiales, por favor.
-        </h2>
+      <Layout titleHeader={t('TWO_PLAYER_MAIN_MENU')} href='/TwoPlayers'>
+        <h2 className={styles.title}>{t('INSTRUCTIONS_MULTIPLAYER')}</h2>
 
         <form className={styles.form} onSubmit={handleSubmit}>
           <input
@@ -49,12 +50,12 @@ export default function Offline() {
             type='text'
             name='inputWord'
             id='inputWord'
-            placeholder='Ej.: Autopista'
+            placeholder={t('EXAMPLE')}
             value={keyword}
             autoComplete='off'
           />
           <button className={styles.button} type='submit'>
-            <span className={styles.buttonContent}>Empezar</span>
+            <span className={styles.buttonContent}>{t('START')}</span>
             <ArrowNarrowRight />
           </button>
         </form>
