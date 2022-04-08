@@ -1,5 +1,5 @@
 import Layout from 'components/Layout';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import ButtonContext from 'context/buttonContext';
 import Swal from 'sweetalert2';
@@ -9,13 +9,14 @@ import { useRouter } from 'next/router';
 import styles from './styles.module.css';
 import ButtonLetter from 'components/ButtonLetter';
 import { ALPHABET } from 'constants/alphabet';
-import { offlineService, onlineService, localMultiplayerService } from 'services/callsApi';
+import { offlineService, localMultiplayerService } from 'services/callsApi';
 import { useI18N } from 'context/i18n';
 
 export default function Game({ word = [], title = 'a', id }) {
   const { wordState, setWordState, tries, setTries } = useContext(ButtonContext);
   const router = useRouter();
   const { t } = useI18N();
+  const wordRef = useRef(word);
 
   useEffect(function () {
     if (word.length === 0) {
@@ -30,35 +31,23 @@ export default function Game({ word = [], title = 'a', id }) {
     }
   }, []);
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        if (id.startsWith('N')) {
-          const w = await onlineService({ id });
-          setWordState(w.map(() => ' '));
-        } else {
-          setWordState(word.map(() => ' '));
-        }
-      } catch (error) {
-        const MySwal = withReactContent(Swal);
-        MySwal.fire({
-          icon: 'error',
-          title: t('SERVER_ERROR_MODAL'),
-          text: t('ERROR_ONLINE'),
-        }).then(() => {
+  useEffect(function () {
+    if (id.startsWith('N')) {
+      fetch(`/api/getAndDelete?q=${id}`)
+        .then((res) => res.json())
+        .then((wordArray) => {
+          wordRef.current = wordArray;
+          setWordState(wordArray.map(() => ' '));
+        })
+        .catch((e) => {
+          console.error(e);
           router.push('/');
         });
-        router.push('/');
-      }
+    } else {
+      setWordState(wordRef.current.map(() => ' '));
     }
-    fetchData();
     setTries(5);
   }, []);
-
-  // useEffect(function () {
-  //   setWordState(word.map(() => ' '));
-  //   setTries(5);
-  // }, []);
 
   return (
     <>
@@ -109,7 +98,7 @@ export default function Game({ word = [], title = 'a', id }) {
         {/* KEYBOARD */}
         <div className={styles.containerLetters}>
           {ALPHABET.map((letter, index) => {
-            return <ButtonLetter letter={letter} word={word} key={index} />;
+            return <ButtonLetter letter={letter} word={wordRef.current} key={index} />;
           })}
         </div>
       </Layout>
@@ -123,9 +112,6 @@ export async function getServerSideProps(context) {
   let wordArray = [];
   let title = 'TWO_PLAYER_MAIN_MENU';
 
-  console.log('El contexto:');
-  console.log(context);
-
   if (id.startsWith('O')) {
     wordArray = offlineService({ id });
   } else if (id.startsWith('N')) {
@@ -134,11 +120,6 @@ export async function getServerSideProps(context) {
     wordArray = await localMultiplayerService({ id, locale });
     title = 'ONE_PLAYER_MAIN_MENU';
   }
-
-  // else if (id.startsWith('N') && typeof window === 'undefined') {
-  //   console.log('window: ', typeof window);
-  //   wordArray = await onlineService({ id });
-  // }
 
   return {
     props: { word: wordArray, title, id },
