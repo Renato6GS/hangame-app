@@ -65,6 +65,7 @@ export default function ButtonLetter({ letter, word }) {
       icon: 'error',
       title: t('GAME_OVER'),
       text: t('BETTER_LUCK'),
+      footer: `${t('ANSWER')}: ${word.join('')}`,
     }).then(() => {
       router.push('/');
     });
