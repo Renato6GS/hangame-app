@@ -8,6 +8,7 @@ import ArrowNarrowRight from 'components/icons/ArrowNarrowRight';
 import CopyIcon from 'components/icons/CopyIcon';
 import Loader from 'components/Loader';
 import { useI18N } from 'context/i18n';
+import { useRouter } from 'next/router';
 
 export default function Online({ API, CREATE_ROOM }) {
   const [keyword, setKeyword] = useState('');
@@ -16,6 +17,7 @@ export default function Online({ API, CREATE_ROOM }) {
   const [showLink, setShowLink] = useState(false);
   const [loading, setLoading] = useState(false);
   const { t } = useI18N();
+  const { locale } = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,7 +29,7 @@ export default function Online({ API, CREATE_ROOM }) {
       const response = await fetch(`${API}${CREATE_ROOM}${keyword}`);
       const { id } = await response.json();
 
-      setGenerateLink(`https://hangame-app.vercel.app/Game/N${id}`);
+      setGenerateLink(`https://hangame-app.vercel.app/${locale}/Game/N${id}`);
       setShowLink(true);
     } catch (error) {
       console.log('Hubo el siguiente error creando la sala:');
@@ -70,7 +72,7 @@ export default function Online({ API, CREATE_ROOM }) {
         <link rel='icon' href='/logo.ico' />
       </Head>
       {loading && <Loader />}
-      <Layout titleHeader={t('TWO_PLAYER_MAIN_MENU')} href='/TwoPlayers'>
+      <Layout titleHeader={t('TWO_PLAYER_MAIN_MENU')} href='/TwoPlayers' largeScreen={true}>
         <h2 className={styles.title}>{t('INSTRUCTIONS_MULTIPLAYER')}</h2>
 
         <form className={styles.form} onSubmit={handleSubmit}>
@@ -92,7 +94,7 @@ export default function Online({ API, CREATE_ROOM }) {
 
         {showLink && (
           <section className={styles.linkContainer}>
-            <h3 className={`${styles.title} ${styles.titleLink}`}>{t('SHARE_LINK')}:</h3>
+            <h3 className={`${styles.title} ${styles.titleLink}`}>{t('SHARE_LINK')}</h3>
             <h4 className={styles.linkToShare}>{generateLink}</h4>
             <button className={`${styles.button} ${styles.buttonLink}`} onClick={handleCopyClick}>
               <span className={styles.copyLabel}>{isCopied ? t('COPIED') : t('COPY')}</span>

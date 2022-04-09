@@ -14,8 +14,8 @@ export default function Home() {
         <title>{t('SEO_MAIN_MENU')}</title>
         <meta name='description' content='The best Hangman game' />
         <link rel='icon' href='/logo.ico' />
-        <link rel='preload' href='/static/font/Roboto-Bold.ttf' as='font' crossOrigin='' />
-        <link rel='preload' href='/static/font/Roboto-Regular.ttf' as='font' crossOrigin='' />
+        <link rel='preload' href='/font/Roboto-Bold.ttf' as='font' crossOrigin='' />
+        <link rel='preload' href='/font/Roboto-Regular.ttf' as='font' crossOrigin='' />
       </Head>
 
       <Layout isMainMenu={true} footer={true}>
