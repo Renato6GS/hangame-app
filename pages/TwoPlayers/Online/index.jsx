@@ -21,8 +21,9 @@ export default function Online({ API, CREATE_ROOM }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (validateLeng({ keyword })) return;
-    if (validateCharacters({ keyword })) return;
+    if (validateLeng({ keyword, title: t('VALIDATE_CHAR_ERROR'), message: t('VALIDATE_LENG_ERROR_MESSAGE') })) return;
+    if (validateCharacters({ keyword, title: t('VALIDATE_CHAR_ERROR'), message: t('VALIDATE_CHAR_ERROR_MESSAGE') }))
+      return;
     setLoading(true);
 
     try {
