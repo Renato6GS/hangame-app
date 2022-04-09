@@ -1,5 +1,5 @@
 import Layout from 'components/Layout';
-import React, { useContext, useEffect, useRef } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import Head from 'next/head';
 import ButtonContext from 'context/buttonContext';
 import Swal from 'sweetalert2';
@@ -11,12 +11,14 @@ import ButtonLetter from 'components/ButtonLetter';
 import { ALPHABET } from 'constants/alphabet';
 import { offlineService, localMultiplayerService } from 'services/callsApi';
 import { useI18N } from 'context/i18n';
+import Loader from 'components/Loader';
 
 export default function Game({ word = [], title = 'a', id }) {
   const { wordState, setWordState, tries, setTries } = useContext(ButtonContext);
   const router = useRouter();
   const { t } = useI18N();
   const wordRef = useRef(word);
+  const [loading, setLoading] = useState(false);
 
   useEffect(function () {
     if (word.length === 0) {
@@ -32,19 +34,23 @@ export default function Game({ word = [], title = 'a', id }) {
   }, []);
 
   useEffect(function () {
+    setLoading(true);
     if (id.startsWith('N')) {
       fetch(`/api/getAndDelete?q=${id}`)
         .then((res) => res.json())
         .then((wordArray) => {
           wordRef.current = wordArray;
           setWordState(wordArray.map(() => ' '));
+          setLoading(false);
         })
         .catch((e) => {
+          setLoading(false);
           console.error(e);
           router.push('/');
         });
     } else {
       setWordState(wordRef.current.map(() => ' '));
+      setLoading(false);
     }
     setTries(5);
   }, []);
@@ -54,13 +60,12 @@ export default function Game({ word = [], title = 'a', id }) {
       <Head>
         <title>{t('SEO_GAME')}</title>
         <link rel='icon' href='/logo.ico' />
-        <link rel='preload' href='/static/font/Roboto-Bold.ttf' as='font' crossOrigin='' />
-        <link rel='preload' href='/static/font/Roboto-Regular.ttf' as='font' crossOrigin='' />
+        <link rel='preload' href='/font/Roboto-Bold.ttf' as='font' crossOrigin='' />
+        <link rel='preload' href='/font/Roboto-Regular.ttf' as='font' crossOrigin='' />
         <meta name='description' content='Hangman game two players online' />
       </Head>
-
+      {loading && <Loader />}
       <Layout
-        // titleHeader={t(title === 'ONE_PLAYER_MAIN_MENU' ? 'TWO_PLAYER_MAIN_MENU' : 'ONE_PLAYER_MAIN_MENU')}
         titleHeader={t(title === 'TWO_PLAYER_MAIN_MENU' ? 'TWO_PLAYER_MAIN_MENU' : 'ONE_PLAYER_MAIN_MENU')}
         largeScreen={true}>
         <div>
