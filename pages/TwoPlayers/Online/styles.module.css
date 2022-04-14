@@ -1,9 +1,10 @@
 .title {
   margin: 8%;
   margin-top: 50px;
-  font-weight: 300;
   font-size: 1.25rem;
   line-height: 1.7rem;
+  font-family: Roboto, sans-serif;
+  font-weight: 300;
 }
 
 .form {
