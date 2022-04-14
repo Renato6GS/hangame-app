@@ -1,34 +1,67 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+HI! 🥰
 
-## Getting Started
+This is my first project with React/NextJS made thanks by Midudev's tutorials 😁
 
-First, run the development server:
+## Table of contents
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Overview
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Making this project was really fun and totally easy to do thanks to Midudev's tutorials 💙. It's the first game I've made in my short history as a programmer and I'm quite happy with the end result. Also, this was my first project where I practiced the "Mobile First" 📱 design strategy and it was really helpful.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+### The challenge
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Users should be able to:
 
-## Learn More
+- Play in single player with a difficult selector.
+- Play in multiplayer with another person.
 
-To learn more about Next.js, take a look at the following resources:
+### Screenshot
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Main menu
+  ![](./readme_sources/menu.png)
+- Idiom
+  ![](./readme_sources/idiom.png)
+- Singleplayer menu
+  ![](./readme_sources/menu_singleplayer.png)
+- Idiom
+  ![](./readme_sources/idiom.png)
+- A victory
+  ![](./readme_sources/has_ganado.png)
+- Multiplayer online
+  ![](./readme_sources/multiplayer.png)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## My process
 
-## Deploy on Vercel
+### Built with
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- React
+- Next JS
+- Vercel
+- API Flask with Python (deployed on Heroku)
+- MongoDB (thanks to MongoDB Atlas)
+- CSS Style components
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### What I learned
+
+I've learned how to use React with Next JS. Link my Front-end with a Back-end thanks to API Flask and MongoDB Atlas.
+I have learned too how to add I18N in an extremely simple way thanks to the latest Midudev tutorial. 😍
+I am also proud of the way I handle "responsive design" making a First Mobile design (with Adobe XD), I didn't know that was helpful but yeah, it is!! 😂
+
+### Useful resources
+
+- [Aprende React](https://www.youtube.com/watch?v=T_j60n1zgu0&list=PLV8x_i1fqBw0B008sQn79YxCjkHJU84pC) - These tutorials taught me how to use React from scratch and I highly recommend them.
+- [Aprende NextJS](https://www.youtube.com/c/midudev) - Currently (13/04/2022), they are not available on youtube, but only on [Midudev's twitch channel](https://www.twitch.tv/midudev), which as you may already know, will be deleted after 2 months. So it will be to be patient.
+- [Getting Started With Flask-RESTful API And Deploying to Heroku](https://medium.com/analytics-vidhya/flask-restful-api-with-heroku-da1ecf3e04b) - This helped me how to deploy my Back-end on Heroku with https.
+
+## Author
+
+- [Renato Granados](https://www.linkedin.com/in/renato-granados-636935233/)
