@@ -1,19 +1,19 @@
-import Layout from 'components/Layout';
-import React, { useContext, useEffect, useRef, useState } from 'react';
-import Head from 'next/head';
-import ButtonContext from 'context/buttonContext';
-import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content';
-import { useRouter } from 'next/router';
+import Layout from "components/Layout";
+import React, { useContext, useEffect, useRef, useState } from "react";
+import Head from "next/head";
+import ButtonContext from "context/buttonContext";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+import { useRouter } from "next/router";
 
-import styles from './styles.module.css';
-import ButtonLetter from 'components/ButtonLetter';
-import { ALPHABET } from 'constants/alphabet';
-import { offlineService, localMultiplayerService } from 'services/callsApi';
-import { useI18N } from 'context/i18n';
-import Loader from 'components/Loader';
+import styles from "./styles.module.css";
+import ButtonLetter from "components/ButtonLetter";
+import { ALPHABET } from "constants/alphabet";
+import { offlineService, localMultiplayerService } from "services/callsApi";
+import { useI18N } from "context/i18n";
+import Loader from "components/Loader";
 
-export default function Game({ word = [], title = 'a', id }) {
+export default function Game({ word = [], title = "a", id }) {
   const { wordState, setWordState, tries, setTries } = useContext(ButtonContext);
   const router = useRouter();
   const { t } = useI18N();
@@ -24,32 +24,32 @@ export default function Game({ word = [], title = 'a', id }) {
     if (word.length === 0) {
       const MySwal = withReactContent(Swal);
       MySwal.fire({
-        icon: 'error',
-        title: t('SERVER_ERROR_MODAL'),
-        text: t('TEXT_ERROR_MODAL'),
+        icon: "error",
+        title: t("SERVER_ERROR_MODAL"),
+        text: t("TEXT_ERROR_MODAL"),
       }).then(() => {
-        router.push('/');
+        router.push("/");
       });
     }
   }, []);
 
   useEffect(function () {
     setLoading(true);
-    if (id.startsWith('N')) {
+    if (id.startsWith("N")) {
       fetch(`/api/getAndDelete?q=${id}`)
         .then((res) => res.json())
         .then((wordArray) => {
           wordRef.current = wordArray;
-          setWordState(wordArray.map(() => ' '));
+          setWordState(wordArray.map(() => " "));
           setLoading(false);
         })
         .catch((e) => {
           setLoading(false);
           console.error(e);
-          router.push('/');
+          router.push("/");
         });
     } else {
-      setWordState(wordRef.current.map(() => ' '));
+      setWordState(wordRef.current.map(() => " "));
       setLoading(false);
     }
     setTries(5);
@@ -58,18 +58,18 @@ export default function Game({ word = [], title = 'a', id }) {
   return (
     <>
       <Head>
-        <title>{t('SEO_GAME')}</title>
-        <link rel='icon' href='/logo.ico' />
-        <link rel='preload' href='/font/Roboto-Bold.ttf' as='font' crossOrigin='' />
-        <link rel='preload' href='/font/Roboto-Regular.ttf' as='font' crossOrigin='' />
-        <meta name='description' content='Hangman game two players online' />
+        <title>{t("SEO_GAME")}</title>
+        <link rel="icon" href="/logo.ico" />
+        <link rel="preload" href="/font/Roboto-Bold.ttf" as="font" crossOrigin="" />
+        <link rel="preload" href="/font/Roboto-Regular.ttf" as="font" crossOrigin="" />
+        <meta name="description" content="Hangman game two players online" />
       </Head>
       {loading && <Loader />}
       <Layout
-        titleHeader={t(title === 'TWO_PLAYER_MAIN_MENU' ? 'TWO_PLAYER_MAIN_MENU' : 'ONE_PLAYER_MAIN_MENU')}
+        titleHeader={t(title === "TWO_PLAYER_MAIN_MENU" ? "TWO_PLAYER_MAIN_MENU" : "ONE_PLAYER_MAIN_MENU")}
         largeScreen={true}>
         <div>
-          <h2 className={styles.title}>{t('GUESS_WORD')}</h2>
+          <h2 className={styles.title}>{t("GUESS_WORD")}</h2>
         </div>
 
         {/* PICTURE */}
@@ -115,16 +115,23 @@ export async function getServerSideProps(context) {
   const { params, locale } = context;
   const { id } = params;
   let wordArray = [];
-  let title = 'TWO_PLAYER_MAIN_MENU';
+  let title = "TWO_PLAYER_MAIN_MENU";
 
-  if (id.startsWith('O')) {
-    wordArray = offlineService({ id });
-  } else if (id.startsWith('N')) {
-    wordArray = ['it works'];
-  } else {
-    wordArray = await localMultiplayerService({ id, locale });
-    title = 'ONE_PLAYER_MAIN_MENU';
-  }
+  console.log(params);
+  console.log(id);
+
+  // if (id.startsWith('O')) {
+  //   wordArray = offlineService({ id });
+  // } else if (id.startsWith('N')) {
+  //   wordArray = ['it works'];
+  // } else {
+  //   wordArray = await localMultiplayerService({ id, locale });
+  //   title = 'ONE_PLAYER_MAIN_MENU';
+  // }
+
+  const word = await localMultiplayerService({ id, locale, topic: "Astronomy" });
+  wordArray.push(...word.toUpperCase());
+  console.log(wordArray);
 
   return {
     props: { word: wordArray, title, id },
