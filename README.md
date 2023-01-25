@@ -2,8 +2,11 @@ HI! 🥰
 
 This is my first project with React/NextJS made thanks by Midudev's tutorials 😁
 
+[UPDATE 25/01/2023 - Hackathon "Cohere" by Midudev]: This new version will generate words by IA with "Cohere" and will have huge changes. Flask API in heroku will deleted and the project will use the API routes from next.js. The current version (developed 10 months ago) was deprecated, mongoDB was deleted and the flask API was uploaded on Heroku free plan.
+
 ## Table of contents
 
+- [Table of contents](#table-of-contents)
 - [Overview](#overview)
   - [The challenge](#the-challenge)
   - [Screenshot](#screenshot)

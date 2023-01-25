@@ -1,16 +1,16 @@
-import React from 'react';
-import Footer from 'components/Footer';
-import Header from 'components/Header';
-import Image from 'next/image';
+import React from "react";
+import Footer from "components/Footer";
+import Header from "components/Header";
+import Image from "next/image";
 
-import styles from './styles.module.css';
+import styles from "./styles.module.css";
 
 export default function Layout({
   children,
   isMainMenu = false,
-  titleHeader = '',
+  titleHeader = "",
   footer = false,
-  href = '/',
+  href = "/",
   largeScreen = false,
 }) {
   return (
@@ -19,7 +19,7 @@ export default function Layout({
         {titleHeader && <Header title={titleHeader} href={href} />}
         {isMainMenu && (
           <div className={styles.containerLogo}>
-            <Image src='/img/logo.png' width={218} height={218} alt='Logo Hangame' priority />
+            <Image src="/img/logo.png" width={218} height={218} alt="Logo Hangame" priority />
           </div>
         )}
         {children}

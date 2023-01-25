@@ -1,7 +1,7 @@
-import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content';
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
-export const showModal = ({ type = 'Success', title = 'Emtpy title', message = 'Empty message' }) => {
+export const showModal = ({ type = "Success", title = "Emtpy title", message = "Empty message" }) => {
   const MySwal = withReactContent(Swal);
   MySwal.fire({
     icon: type,
@@ -10,7 +10,7 @@ export const showModal = ({ type = 'Success', title = 'Emtpy title', message = '
   });
 };
 
-export const showModalAndRedirect = ({ type = 'Success', title = 'Emtpy title', message = 'Empty message' }) => {
+export const showModalAndRedirect = ({ type = "Success", title = "Emtpy title", message = "Empty message" }) => {
   const MySwal = withReactContent(Swal);
   MySwal.fire({
     icon: type,
