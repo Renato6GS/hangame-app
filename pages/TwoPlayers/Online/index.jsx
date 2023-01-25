@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
-import Head from 'next/head';
+import React, { useState } from "react";
+import Head from "next/head";
 
-import styles from './styles.module.css';
-import { validateCharacters, validateLeng } from 'utils/inputValidations';
-import Layout from 'components/Layout';
-import ArrowNarrowRight from 'components/icons/ArrowNarrowRight';
-import CopyIcon from 'components/icons/CopyIcon';
-import Loader from 'components/Loader';
-import { useI18N } from 'context/i18n';
-import { useRouter } from 'next/router';
+import styles from "./styles.module.css";
+import { validateCharacters, validateLeng } from "utils/inputValidations";
+import Layout from "components/Layout";
+import ArrowNarrowRight from "components/icons/ArrowNarrowRight";
+import CopyIcon from "components/icons/CopyIcon";
+import Loader from "components/Loader";
+import { useI18N } from "context/i18n";
+import { useRouter } from "next/router";
 
 export default function Online({ API, CREATE_ROOM }) {
-  const [keyword, setKeyword] = useState('');
+  const [keyword, setKeyword] = useState("");
   const [isCopied, setIsCopied] = useState(false);
-  const [generateLink, setGenerateLink] = useState('empy');
+  const [generateLink, setGenerateLink] = useState("empy");
   const [showLink, setShowLink] = useState(false);
   const [loading, setLoading] = useState(false);
   const { t } = useI18N();
@@ -21,8 +21,8 @@ export default function Online({ API, CREATE_ROOM }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (validateLeng({ keyword, title: t('VALIDATE_CHAR_ERROR'), message: t('VALIDATE_LENG_ERROR_MESSAGE') })) return;
-    if (validateCharacters({ keyword, title: t('VALIDATE_CHAR_ERROR'), message: t('VALIDATE_CHAR_ERROR_MESSAGE') }))
+    if (validateLeng({ keyword, title: t("VALIDATE_CHAR_ERROR"), message: t("VALIDATE_LENG_ERROR_MESSAGE") })) return;
+    if (validateCharacters({ keyword, title: t("VALIDATE_CHAR_ERROR"), message: t("VALIDATE_CHAR_ERROR_MESSAGE") }))
       return;
     setLoading(true);
 
@@ -33,7 +33,7 @@ export default function Online({ API, CREATE_ROOM }) {
       setGenerateLink(`https://hangame-app.vercel.app/${locale}/Game/N${id}`);
       setShowLink(true);
     } catch (error) {
-      console.log('Hubo el siguiente error creando la sala:');
+      console.log("Hubo el siguiente error creando la sala:");
       console.error(error);
     }
     setLoading(false);
@@ -45,10 +45,10 @@ export default function Online({ API, CREATE_ROOM }) {
   };
 
   async function copyTextToClipboard(text) {
-    if ('clipboard' in navigator) {
+    if ("clipboard" in navigator) {
       return await navigator.clipboard.writeText(text);
     } else {
-      return document.execCommand('copy', true, text);
+      return document.execCommand("copy", true, text);
     }
   }
 
@@ -68,37 +68,37 @@ export default function Online({ API, CREATE_ROOM }) {
   return (
     <>
       <Head>
-        <title>{t('SEO_TWO_PLAYERS')}</title>
-        <meta name='description' content='Hangman game two players online' />
-        <link rel='icon' href='/logo.ico' />
+        <title>{t("SEO_TWO_PLAYERS")}</title>
+        <meta name="description" content="Hangman game two players online" />
+        <link rel="icon" href="/logo.ico" />
       </Head>
       {loading && <Loader />}
-      <Layout titleHeader={t('TWO_PLAYER_MAIN_MENU')} href='/TwoPlayers' largeScreen={true}>
-        <h2 className={styles.title}>{t('INSTRUCTIONS_MULTIPLAYER')}</h2>
+      <Layout titleHeader={t("TWO_PLAYER_MAIN_MENU")} href="/TwoPlayers" largeScreen={true}>
+        <h2 className={styles.title}>{t("INSTRUCTIONS_MULTIPLAYER")}</h2>
 
         <form className={styles.form} onSubmit={handleSubmit}>
           <input
             className={styles.input}
             onChange={handleChange}
-            type='text'
-            name='inputWord'
-            id='inputWord'
-            placeholder={t('EXAMPLE')}
+            type="text"
+            name="inputWord"
+            id="inputWord"
+            placeholder={t("EXAMPLE")}
             value={keyword}
-            autoComplete='off'
+            autoComplete="off"
           />
-          <button className={styles.button} type='submit'>
-            <span className={styles.buttonContent}>{t('GENATE_LINK')}</span>
+          <button className={styles.button} type="submit">
+            <span className={styles.buttonContent}>{t("GENATE_LINK")}</span>
             <ArrowNarrowRight />
           </button>
         </form>
 
         {showLink && (
           <section className={styles.linkContainer}>
-            <h3 className={`${styles.title} ${styles.titleLink}`}>{t('SHARE_LINK')}</h3>
+            <h3 className={`${styles.title} ${styles.titleLink}`}>{t("SHARE_LINK")}</h3>
             <h4 className={styles.linkToShare}>{generateLink}</h4>
             <button className={`${styles.button} ${styles.buttonLink}`} onClick={handleCopyClick}>
-              <span className={styles.copyLabel}>{isCopied ? t('COPIED') : t('COPY')}</span>
+              <span className={styles.copyLabel}>{isCopied ? t("COPIED") : t("COPY")}</span>
               <CopyIcon />
             </button>
           </section>

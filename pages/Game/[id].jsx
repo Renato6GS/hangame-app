@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 import styles from "./styles.module.css";
 import ButtonLetter from "components/ButtonLetter";
 import { ALPHABET } from "constants/alphabet";
-import { offlineService, localMultiplayerService } from "services/callsApi";
+import { localMultiplayerService } from "services/callsApi";
 import { useI18N } from "context/i18n";
 import Loader from "components/Loader";
 

@@ -1,9 +1,9 @@
-import { createContext, useContext, useCallback } from 'react';
-import { useRouter } from 'next/router';
+import { createContext, useContext, useCallback } from "react";
+import { useRouter } from "next/router";
 
 // Esto es bueno para aplicaciones no tan grandes
-import es from 'translations/es.json';
-import en from 'translations/en.json';
+import es from "translations/es.json";
+import en from "translations/en.json";
 
 const I18NContext = createContext();
 
@@ -31,7 +31,7 @@ export function I18nProvider({ children }) {
 export function useI18N() {
   const context = useContext(I18NContext);
   if (context === undefined) {
-    throw new Error('useI18N must be used within a I18NProvider');
+    throw new Error("useI18N must be used within a I18NProvider");
   }
   return context;
 }
