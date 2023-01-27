@@ -5,10 +5,10 @@ import styles from "./styles.module.css";
 import { validateCharacters, validateLeng } from "utils/inputValidations";
 import Layout from "components/Layout";
 import ArrowNarrowRight from "components/icons/ArrowNarrowRight";
-import CopyIcon from "components/icons/CopyIcon";
 import Loader from "components/Loader";
 import { useI18N } from "context/i18n";
 import { useRouter } from "next/router";
+import { CopyIcon } from "components/icons";
 
 export default function Online({ API, CREATE_ROOM }) {
   const [keyword, setKeyword] = useState("");
