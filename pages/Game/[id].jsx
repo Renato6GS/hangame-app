@@ -60,8 +60,6 @@ export default function Game({ word = [], title = "a", id }) {
       <Head>
         <title>{t("SEO_GAME")}</title>
         <link rel="icon" href="/logo.ico" />
-        <link rel="preload" href="/font/Roboto-Bold.ttf" as="font" crossOrigin="" />
-        <link rel="preload" href="/font/Roboto-Regular.ttf" as="font" crossOrigin="" />
         <meta name="description" content="Hangman game two players online" />
       </Head>
       {loading && <Loader />}
@@ -112,13 +110,11 @@ export default function Game({ word = [], title = "a", id }) {
 }
 
 export async function getServerSideProps(context) {
-  const { params, locale } = context;
-  const { id } = params;
+  const { query, locale } = context;
+
+  const { id, topic } = query;
   let wordArray = [];
   let title = "TWO_PLAYER_MAIN_MENU";
-
-  console.log(params);
-  console.log(id);
 
   // if (id.startsWith('O')) {
   //   wordArray = offlineService({ id });
@@ -129,9 +125,8 @@ export async function getServerSideProps(context) {
   //   title = 'ONE_PLAYER_MAIN_MENU';
   // }
 
-  const word = await localMultiplayerService({ id, locale, topic: "Astronomy" });
+  const word = await localMultiplayerService({ id, locale, topic: topic || "Astronomy" });
   wordArray.push(...word.toUpperCase());
-  console.log(wordArray);
 
   return {
     props: { word: wordArray, title, id },

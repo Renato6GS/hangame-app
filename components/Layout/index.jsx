@@ -14,17 +14,15 @@ export default function Layout({
   largeScreen = false,
 }) {
   return (
-    <>
-      <main className={`${styles.mainContainer} ${largeScreen && styles.largeScreen} `}>
-        {titleHeader && <Header title={titleHeader} href={href} />}
-        {isMainMenu && (
-          <div className={styles.containerLogo}>
-            <Image src="/img/logo.png" width={218} height={218} alt="Logo Hangame" priority />
-          </div>
-        )}
-        {children}
-        {footer && <Footer />}
-      </main>
-    </>
+    <main className={`${styles.mainContainer} ${largeScreen && styles.largeScreen} `}>
+      {titleHeader && <Header title={titleHeader} href={href} />}
+      {isMainMenu && (
+        <div className={styles.containerLogo}>
+          <Image src="/img/logo.png" width={218} height={218} alt="Logo Hangame" priority />
+        </div>
+      )}
+      {children}
+      {footer && <Footer />}
+    </main>
   );
 }
