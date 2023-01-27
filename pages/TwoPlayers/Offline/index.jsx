@@ -5,9 +5,9 @@ import Head from "next/head";
 
 import styles from "./styles.module.css";
 import Layout from "components/Layout";
-import ArrowNarrowRight from "components/icons/ArrowNarrowRight";
 import { validateCharacters, validateLeng } from "utils/inputValidations";
 import { useI18N } from "context/i18n";
+import { ArrowNarrowRightIcon } from "components/icons";
 
 export default function Offline() {
   const [keyword, setKeyword] = useState("");
@@ -56,7 +56,7 @@ export default function Offline() {
           />
           <button className={styles.button} type="submit">
             <span className={styles.buttonContent}>{t("START")}</span>
-            <ArrowNarrowRight />
+            <ArrowNarrowRightIcon />
           </button>
         </form>
       </Layout>

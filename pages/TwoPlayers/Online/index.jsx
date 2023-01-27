@@ -4,11 +4,10 @@ import Head from "next/head";
 import styles from "./styles.module.css";
 import { validateCharacters, validateLeng } from "utils/inputValidations";
 import Layout from "components/Layout";
-import ArrowNarrowRight from "components/icons/ArrowNarrowRight";
 import Loader from "components/Loader";
 import { useI18N } from "context/i18n";
 import { useRouter } from "next/router";
-import { CopyIcon } from "components/icons";
+import { ArrowNarrowRightIcon, CopyIcon } from "components/icons";
 
 export default function Online({ API, CREATE_ROOM }) {
   const [keyword, setKeyword] = useState("");
@@ -89,7 +88,7 @@ export default function Online({ API, CREATE_ROOM }) {
           />
           <button className={styles.button} type="submit">
             <span className={styles.buttonContent}>{t("GENATE_LINK")}</span>
-            <ArrowNarrowRight />
+            <ArrowNarrowRightIcon />
           </button>
         </form>
 
