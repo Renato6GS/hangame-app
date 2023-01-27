@@ -11,14 +11,34 @@
   transition: 0.3s ease-in-out border-color, 0.3s ease-in-out padding-left, 0.3s ease-in-out padding-right;
 }
 
+.simpleButton {
+  color: #09f;
+  align-self: flex-start;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3rem;
+}
+
 @media (hover: hover) {
   .btn:hover {
     border-color: black;
     padding-left: 20px;
     padding-right: 20px;
   }
+
+  .simpleButton:hover {
+    text-decoration: underline;
+  }
 }
 
 .btn:active {
   transform: scale(0.99);
+}
+
+.simpleButton:active {
+  color: darkblue;
 }

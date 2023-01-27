@@ -6,10 +6,11 @@ import Head from "next/head";
 import styles from "./styles.module.css";
 import { useI18N } from "context/i18n";
 import Button from "components/Button";
-import { ArrowNarrowRightIcon } from "components/icons";
+import { ArrowLeftIcon, ArrowNarrowRightIcon } from "components/icons";
 import { DIFFICULTIES } from "constants/DIFFICULTIES";
 import { TOPICS_ARRAY } from "constants/TOPICS";
 import { useRouter } from "next/router";
+import SimpleButton from "components/Button/SimpleButton";
 
 export default function OnePlayer() {
   const { t } = useI18N();
@@ -21,7 +22,6 @@ export default function OnePlayer() {
   const router = useRouter();
 
   const handleClickDifficulty = (e) => {
-    console.log(e.target.value);
     setGameOptions((acc) => ({ ...acc, difficulty: e.target.value }));
     setSteps((acc) => acc + 1);
   };
@@ -30,11 +30,12 @@ export default function OnePlayer() {
     console.log(e.target.value);
     setGameOptions((acc) => ({ ...acc, topic: e.target.value }));
     setSteps((acc) => acc + 1);
-    generateGame();
   };
 
+  // const generateGame = () => router.push(`/Game/${gameOptions.difficulty}/${gameOptions.topic}`);
   const generateGame = () => {
-    router.push(`/Game/${gameOptions.difficulty}/${gameOptions.topic}`);
+    console.log(gameOptions);
+    router.push(`/Game/${gameOptions.difficulty}?topic=${gameOptions.topic}`);
   };
 
   return (
@@ -60,6 +61,10 @@ export default function OnePlayer() {
 
           {steps === 1 ? (
             <>
+              <SimpleButton onClick={() => setSteps((acc) => acc - 1)}>
+                <ArrowLeftIcon />
+                Regresar
+              </SimpleButton>
               <h2 className={styles.title}>{t("SELECT_A_TOPIC")}</h2>
               {TOPICS_ARRAY.map((topic) => (
                 <Button key={topic} value={topic} onClick={handleClickTopic}>
@@ -70,7 +75,7 @@ export default function OnePlayer() {
             </>
           ) : null}
 
-          {steps === 2 ? <p>Generando...</p> : null}
+          {steps === 2 ? <Button onClick={generateGame}>¿Todo listo?</Button> : null}
         </LayoutButton>
       </Layout>
     </>

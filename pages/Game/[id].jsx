@@ -112,13 +112,11 @@ export default function Game({ word = [], title = "a", id }) {
 }
 
 export async function getServerSideProps(context) {
-  const { params, locale } = context;
-  const { id } = params;
+  const { query, locale } = context;
+
+  const { id, topic } = query;
   let wordArray = [];
   let title = "TWO_PLAYER_MAIN_MENU";
-
-  console.log(params);
-  console.log(id);
 
   // if (id.startsWith('O')) {
   //   wordArray = offlineService({ id });
@@ -129,9 +127,8 @@ export async function getServerSideProps(context) {
   //   title = 'ONE_PLAYER_MAIN_MENU';
   // }
 
-  const word = await localMultiplayerService({ id, locale, topic: "Astronomy" });
+  const word = await localMultiplayerService({ id, locale, topic: topic || "Astronomy" });
   wordArray.push(...word.toUpperCase());
-  console.log(wordArray);
 
   return {
     props: { word: wordArray, title, id },
