@@ -14,8 +14,8 @@
 @media (hover: hover) {
   .btn:hover {
     border-color: black;
-    padding-left: 22px;
-    padding-right: 22px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }
 
