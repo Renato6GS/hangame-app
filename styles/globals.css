@@ -1,6 +1,6 @@
 :root {
-  --primary-color: #C1D9C2;
-  --secondary-color: #2B151C;
+  --primary-color: #c1d9c2;
+  --secondary-color: #2b151c;
   --white: #fff;
   --font-color: #707070;
   --link-color: #508152;
@@ -10,8 +10,8 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+    Helvetica Neue, sans-serif;
   background-color: var(--primary-color);
 }
 
@@ -25,32 +25,32 @@ a {
 }
 
 @font-face {
-  font-family: 'Roboto';
-  src: url('/font/Roboto-Regular.ttf');
+  font-family: "Roboto";
+  src: url("/font/Roboto-Regular.ttf");
   font-weight: 400;
   font-size: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Roboto';
-  src: url('/font/Roboto-Bold.ttf');
+  font-family: "Roboto-bold";
+  src: url("/font/Roboto-Bold.ttf");
   font-style: bold;
   font-weight: 700;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Roboto';
-  src: url('/font/Roboto-Italic.ttf');
+  font-family: "Roboto-italic";
+  src: url("/font/Roboto-Italic.ttf");
   font-style: italic;
   font-weight: 400;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Roboto';
-  src: url('/font/Roboto-LightItalic.ttf');
+  font-family: "Roboto-lightItalic";
+  src: url("/font/Roboto-LightItalic.ttf");
   font-style: light;
   font-weight: 300;
   font-display: swap;
@@ -66,7 +66,7 @@ a {
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
 
- html {
+html {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
 }
@@ -232,7 +232,8 @@ textarea {
  */
 
 button,
-input { /* 1 */
+input {
+  /* 1 */
   overflow: visible;
 }
 
@@ -242,7 +243,8 @@ input { /* 1 */
  */
 
 button,
-select { /* 1 */
+select {
+  /* 1 */
   text-transform: none;
 }
 

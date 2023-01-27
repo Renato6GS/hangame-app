@@ -60,8 +60,6 @@ export default function Game({ word = [], title = "a", id }) {
       <Head>
         <title>{t("SEO_GAME")}</title>
         <link rel="icon" href="/logo.ico" />
-        <link rel="preload" href="/font/Roboto-Bold.ttf" as="font" crossOrigin="" />
-        <link rel="preload" href="/font/Roboto-Regular.ttf" as="font" crossOrigin="" />
         <meta name="description" content="Hangman game two players online" />
       </Head>
       {loading && <Loader />}
