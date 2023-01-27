@@ -6,6 +6,8 @@ import Head from "next/head";
 
 import styles from "./styles.module.css";
 import { useI18N } from "context/i18n";
+import Button from "components/Button";
+import { ArrowNarrowRightIcon } from "components/icons";
 
 export default function OnePlayer() {
   const { t } = useI18N();
@@ -34,9 +36,10 @@ export default function OnePlayer() {
 
         <LayoutButton>
           {steps === 0 ? (
-            <button value={"easy"} onClick={handleClickDifficulty}>
+            <Button value={"easy"} onClick={handleClickDifficulty}>
               Fácil
-            </button>
+              <ArrowNarrowRightIcon />
+            </Button>
           ) : null}
 
           {steps === 1 ? (

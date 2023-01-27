@@ -1,0 +1,24 @@
+.btn {
+  width: 100%;
+  border-radius: 24px;
+  background-color: var(--primary-color);
+  padding: 22px 18px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: 0.3s ease-in-out border-color, 0.3s ease-in-out padding-left, 0.3s ease-in-out padding-right;
+}
+
+@media (hover: hover) {
+  .btn:hover {
+    border-color: black;
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+}
+
+.btn:active {
+  transform: scale(0.99);
+}
