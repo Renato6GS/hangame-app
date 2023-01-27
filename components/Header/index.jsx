@@ -9,8 +9,10 @@ export default function Header({ title, href = "/" }) {
   const { locale } = useRouter();
   return (
     <header className={styles.header}>
-      <Link href={href} locale={locale} passHref>
-        <ArrowLeftIcon stroke="#fff" className={styles.arrow} />
+      <Link href={href} locale={locale}>
+        <a className={styles.arrow}>
+          <ArrowLeftIcon />
+        </a>
       </Link>
       <h2 className={styles.title}>{title}</h2>
     </header>

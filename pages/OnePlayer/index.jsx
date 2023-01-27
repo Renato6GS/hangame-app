@@ -32,9 +32,7 @@ export default function OnePlayer() {
     setSteps((acc) => acc + 1);
   };
 
-  // const generateGame = () => router.push(`/Game/${gameOptions.difficulty}/${gameOptions.topic}`);
   const generateGame = () => {
-    console.log(gameOptions);
     router.push(`/Game/${gameOptions.difficulty}?topic=${gameOptions.topic}`);
   };
 
