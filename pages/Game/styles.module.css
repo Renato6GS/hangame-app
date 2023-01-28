@@ -1,5 +1,5 @@
 .title {
-  margin: 0 8%;
+  margin: 0 2.5rem;
   margin-top: 50px;
   font-weight: 300;
   font-size: 1.25rem;
@@ -27,7 +27,7 @@
   width: 70px;
   position: absolute;
   bottom: 20px;
-  left: 20px
+  left: 20px;
 }
 
 .column {
@@ -44,7 +44,7 @@
   width: 120px;
   position: absolute;
   top: 37px;
-  left: 53px
+  left: 53px;
 }
 
 .rope {
@@ -52,7 +52,7 @@
   position: absolute;
   height: 15%;
   top: 37px;
-  left: 170px
+  left: 170px;
 }
 
 .head {
@@ -111,7 +111,7 @@
 
 .wordContainer {
   width: 100%;
-  padding: 20px 8%;
+  padding: 1.25rem 2.5rem;
   display: grid;
   grid-template-columns: repeat(auto, 1fr);
   grid-template-rows: 1;
@@ -140,7 +140,7 @@
 
 .containerLetters {
   width: 100%;
-  padding: 8%;
+  padding: 2.5rem 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -152,6 +152,19 @@
   border: solid red 3px;
 }
 
-.lostLeftArm, .lostRigthArm, .lostLeftLeg, .lostRightLeg, .lostBody {
+.lostLeftArm,
+.lostRigthArm,
+.lostLeftLeg,
+.lostRightLeg,
+.lostBody {
   border-left: solid red 3px;
+}
+
+.containerUtils {
+  width: 100%;
+  /* background-color: red; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2.5rem;
 }

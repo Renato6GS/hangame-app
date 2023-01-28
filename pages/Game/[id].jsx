@@ -12,6 +12,7 @@ import { ALPHABET } from "constants/alphabet";
 import { localMultiplayerService } from "services/gameModesApi";
 import { useI18N } from "context/i18n";
 import Loader from "components/Loader";
+import ClueButton from "components/ClueButton";
 
 export default function Game({ word = [], title = "a", id }) {
   const { wordState, setWordState, tries, setTries } = useContext(ButtonContext);
@@ -19,6 +20,7 @@ export default function Game({ word = [], title = "a", id }) {
   const { t } = useI18N();
   const wordRef = useRef(word);
   const [loading, setLoading] = useState(false);
+  const [renderAlphabet, setRenderAlphabet] = useState(false);
 
   useEffect(function () {
     if (word.length === 0) {
@@ -51,6 +53,7 @@ export default function Game({ word = [], title = "a", id }) {
     } else {
       setWordState(wordRef.current.map(() => " "));
       setLoading(false);
+      setRenderAlphabet(true);
     }
     setTries(5);
   }, []);
@@ -87,7 +90,7 @@ export default function Game({ word = [], title = "a", id }) {
           </div>
         </section>
 
-        {/* WORD HIDDNE */}
+        {/* WORD HIDDEN */}
         <section className={styles.wordContainer}>
           {wordState.map((w, i) => {
             return (
@@ -98,12 +101,19 @@ export default function Game({ word = [], title = "a", id }) {
           })}
         </section>
 
-        {/* KEYBOARD */}
-        <div className={styles.containerLetters}>
-          {ALPHABET.map((letter, index) => {
-            return <ButtonLetter letter={letter} word={wordRef.current} key={index} />;
-          })}
+        <div className={styles.containerUtils}>
+          <span className={styles.titleTries}>Intento: 1</span>
+          <ClueButton word={word} />
         </div>
+
+        {/* KEYBOARD */}
+        {!renderAlphabet ? null : (
+          <div className={styles.containerLetters}>
+            {ALPHABET.map((letter, index) => {
+              return <ButtonLetter letter={letter} word={wordRef.current} key={index} />;
+            })}
+          </div>
+        )}
       </Layout>
     </>
   );

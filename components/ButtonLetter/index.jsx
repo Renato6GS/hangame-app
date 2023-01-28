@@ -1,12 +1,11 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
-import confetti from "canvas-confetti";
 import { useRouter } from "next/router";
 
 import styles from "./styles.module.css";
 import ButtonContext from "context/buttonContext";
 import { useI18N } from "context/i18n";
+import { showLoseModal, showWinModal } from "utils/modals";
 
 const Toast = Swal.mixin({
   toast: true,
@@ -25,6 +24,17 @@ export default function ButtonLetter({ letter, word }) {
   const { wordState, setWordState, tries, setTries } = useContext(ButtonContext);
   const router = useRouter();
   const { t } = useI18N();
+
+  useEffect(() => {
+    if (wordState.join("").includes(letter)) {
+      console.log("Me ejecué");
+      console.log(letter);
+      setDeactivateButton(true);
+      console.log(wordState.join(""));
+    }
+    // console.log("effect del alfabeto");
+    // console.log(wordState.join(""));
+  }, [wordState]);
 
   const evaluateLetter = ({ value }) => {
     const wordString = wordState;
@@ -55,32 +65,8 @@ export default function ButtonLetter({ letter, word }) {
       });
     }
 
-    if (wordState.join("") === word.join("")) showWinModal();
-    else if (tries === 0 && !found) showLoseModal();
-  };
-
-  const showLoseModal = () => {
-    const MySwal = withReactContent(Swal);
-    MySwal.fire({
-      icon: "error",
-      title: t("GAME_OVER"),
-      text: t("BETTER_LUCK"),
-      footer: `${t("ANSWER")}: ${word.join("")}`,
-    }).then(() => {
-      router.push("/");
-    });
-  };
-
-  const showWinModal = () => {
-    confetti();
-    const MySwal = withReactContent(Swal);
-    MySwal.fire({
-      icon: "success",
-      title: t("YOU_WON"),
-      text: t("CONGRATULATIONS"),
-    }).then(() => {
-      router.push("/");
-    });
+    if (wordState.join("") === word.join("")) showWinModal(t, router, word);
+    else if (tries === 0 && !found) showLoseModal(t, router, word);
   };
 
   const handleClick = (e) => {
