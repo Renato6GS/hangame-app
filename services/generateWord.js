@@ -3,7 +3,7 @@ import { TOPICS } from "constants/TOPICS";
 
 cohere.init(process.env.COHERE_API_KEY);
 
-export const generateWord = async ({ id, locale, topic, numberOfGenerations = 0 }) => {
+export const generateWord = async ({ id, topic, numberOfGenerations = 0 }) => {
   const MAX_GENERATIONS = 3; // Esto debido a la limitación de la API y para que no me cobren xD
   numberOfGenerations++;
   const prompt = `This is a hangman game where a player wants to guess a hidden word about ${topic}. You have to generate a ${id} word about astronomy so that the player has to guess it..
@@ -47,6 +47,6 @@ export const generateWord = async ({ id, locale, topic, numberOfGenerations = 0 
     return word;
   } else {
     console.log("la palabra no cumple con los requisitos, se vuelve a generar: " + word);
-    return generateWord({ id, locale, topic, numberOfGenerations });
+    return generateWord({ id, topic, numberOfGenerations });
   }
 };

@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 import styles from "./styles.module.css";
 import ButtonLetter from "components/ButtonLetter";
 import { ALPHABET } from "constants/alphabet";
-import { localMultiplayerService } from "services/callsApi";
+import { localMultiplayerService } from "services/gameModesApi";
 import { useI18N } from "context/i18n";
 import Loader from "components/Loader";
 
@@ -126,6 +126,12 @@ export async function getServerSideProps(context) {
   // }
 
   const word = await localMultiplayerService({ id, locale, topic: topic || "Astronomy" });
+  if (word === false) {
+    return {
+      props: { word: [], title, id },
+    };
+  }
+
   wordArray.push(...word.toUpperCase());
 
   return {

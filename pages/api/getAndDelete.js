@@ -1,4 +1,4 @@
-import { onlineService } from "services/callsApi";
+import { onlineService } from "services/gameModesApi";
 
 const CACHE = { id: 0, wordArray: "" };
 

@@ -1,5 +1,6 @@
 import CryptoJS from "crypto-js";
 import { generateWord } from "./generateWord";
+import { translateWord } from "./translateWord";
 
 const API = process.env.API;
 
@@ -33,7 +34,8 @@ export const onlineService = async ({ id }) => {
 export const localMultiplayerService = async ({ id, locale, topic }) => {
   let word = "";
   try {
-    word = await generateWord({ id, locale, topic });
+    word = await generateWord({ id, topic });
+    word = await translateWord({ locale, word });
     console.log("la word es: ");
     console.log(word);
   } catch (error) {
