@@ -55,7 +55,7 @@ export default function Game({ word = [], title = "a", id, numberOfClues = 0 }) 
       setLoading(false);
       setRenderAlphabet(true);
     }
-    setTries(5);
+    setTries(6);
   }, []);
 
   return (
@@ -102,7 +102,7 @@ export default function Game({ word = [], title = "a", id, numberOfClues = 0 }) 
         </section>
 
         <div className={styles.containerUtils}>
-          <span className={styles.titleTries}>Intento: 1</span>
+          <span className={styles.titleTries}>Intentos: {tries + 1}</span>
           <ClueButton word={word} numberOfClues={numberOfClues} />
         </div>
 
