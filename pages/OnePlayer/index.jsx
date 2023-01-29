@@ -61,7 +61,7 @@ export default function OnePlayer() {
             <>
               <SimpleButton onClick={() => setSteps((acc) => acc - 1)}>
                 <ArrowLeftIcon />
-                Regresar
+                {t("RETURN")}
               </SimpleButton>
               <h2 className={styles.title}>{t("SELECT_A_TOPIC")}</h2>
               {TOPICS_ARRAY.map((topic) => (
@@ -73,7 +73,28 @@ export default function OnePlayer() {
             </>
           ) : null}
 
-          {steps === 2 ? <Button onClick={generateGame}>¿Todo listo?</Button> : null}
+          {steps === 2 ? (
+            <div className={styles.resumeContainer}>
+              <SimpleButton onClick={() => setSteps((acc) => acc - 1)}>
+                <ArrowLeftIcon />
+                {t("RETURN")}
+              </SimpleButton>
+              <h2 className={styles.title}>{t("SUMMARY_TITLE")}</h2>
+              <p>{t("RESUME")}</p>
+              <ul>
+                <li>
+                  {t("DIFFICULTY")}: {t(gameOptions.difficulty)}
+                </li>
+                <li>
+                  {t("TOPIC")}: {t(gameOptions.topic)}
+                </li>
+              </ul>
+              <Button onClick={generateGame}>
+                {t("START_GAME")}
+                <ArrowNarrowRightIcon />
+              </Button>
+            </div>
+          ) : null}
         </LayoutButton>
       </Layout>
     </>

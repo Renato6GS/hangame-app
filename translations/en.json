@@ -11,6 +11,8 @@
   "ONE_PLAYER_TITLE": "Single player",
   "SELECT_A_DIFFICULTY": "Select a difficulty",
   "SELECT_A_TOPIC": "Select a topic",
+  "TOPIC": "Topic",
+  "DIFFICULTY": "Difficulty",
   "EASY": "Easy",
   "MEDIUM": "Medium",
   "HARD": "Hard",
@@ -52,5 +54,9 @@
   "ENGLISH": "English",
   "SPANISH": "Spanish",
   "ERROR_ONLINE": "Could not find saved word.",
-  "ANSWER": "Answer"
+  "ANSWER": "Answer",
+  "RETURN": "Go back",
+  "SUMMARY_TITLE": "Summary",
+  "RESUME": "Your options were:",
+  "START_GAME": "Start game"
 }

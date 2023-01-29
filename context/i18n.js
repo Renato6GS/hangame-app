@@ -1,7 +1,6 @@
 import { createContext, useContext, useCallback } from "react";
 import { useRouter } from "next/router";
 
-// Esto es bueno para aplicaciones no tan grandes
 import es from "translations/es.json";
 import en from "translations/en.json";
 

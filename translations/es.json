@@ -11,6 +11,8 @@
   "ONE_PLAYER_TITLE": "Un jugador",
   "SELECT_A_DIFFICULTY": "Seleccione una dificultad",
   "SELECT_A_TOPIC": "Seleccione un tema",
+  "TOPIC": "Tema",
+  "DIFFICULTY": "Dificultad",
   "EASY": "Fácil",
   "MEDIUM": "Medio",
   "HARD": "Difícil",
@@ -52,5 +54,9 @@
   "ENGLISH": "Inglés",
   "SPANISH": "Español",
   "ERROR_ONLINE": "No se pudo encontrar la palabra guardada.",
-  "ANSWER": "Respuesta"
+  "ANSWER": "Respuesta",
+  "RETURN": "Regresar",
+  "SUMMARY_TITLE": "Resumen",
+  "RESUME": "Tus opciones fueron:",
+  "START_GAME": "Empezar"
 }
