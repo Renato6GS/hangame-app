@@ -14,7 +14,7 @@ import { useI18N } from "context/i18n";
 import Loader from "components/Loader";
 import ClueButton from "components/ClueButton";
 
-export default function Game({ word = [], title = "a", id }) {
+export default function Game({ word = [], title = "a", id, numberOfClues = 0 }) {
   const { wordState, setWordState, tries, setTries } = useContext(ButtonContext);
   const router = useRouter();
   const { t } = useI18N();
@@ -103,7 +103,7 @@ export default function Game({ word = [], title = "a", id }) {
 
         <div className={styles.containerUtils}>
           <span className={styles.titleTries}>Intento: 1</span>
-          <ClueButton word={word} />
+          <ClueButton word={word} numberOfClues={numberOfClues} />
         </div>
 
         {/* KEYBOARD */}
@@ -135,7 +135,7 @@ export async function getServerSideProps(context) {
   //   title = 'ONE_PLAYER_MAIN_MENU';
   // }
 
-  const word = await localMultiplayerService({ id, locale, topic: topic || "Astronomy" });
+  const word = await localMultiplayerService({ difficult: id, locale, topic: topic || "Astronomy" });
   if (word === false) {
     return {
       props: { word: [], title, id },
@@ -143,8 +143,9 @@ export async function getServerSideProps(context) {
   }
 
   wordArray.push(...word.toUpperCase());
+  const numberOfClues = id === "easy" ? 3 : id === "medium" ? 2 : 1;
 
   return {
-    props: { word: wordArray, title, id },
+    props: { word: wordArray, title, id, numberOfClues },
   };
 }

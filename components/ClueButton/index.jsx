@@ -5,11 +5,11 @@ import { useRouter } from "next/router";
 import { useContext, useState } from "react";
 import { showWinModal } from "utils/modals";
 
-export default function ClueButton({ word }) {
+export default function ClueButton({ word, numberOfClues }) {
+  const [clues, setClues] = useState(numberOfClues);
   const { wordState, setWordState } = useContext(ButtonContext);
   const { t } = useI18N();
   const router = useRouter();
-  const [clues, setClues] = useState(3);
 
   const giveClue = () => {
     if (clues === 0) return;

@@ -31,10 +31,10 @@ export const onlineService = async ({ id }) => {
   return wordArray;
 };
 
-export const localMultiplayerService = async ({ id, locale, topic }) => {
+export const localMultiplayerService = async ({ difficult, locale, topic }) => {
   let word = "";
   try {
-    word = await generateWord({ id, topic });
+    word = await generateWord({ difficult, topic });
     word = await translateWord({ locale, word });
     console.log("la word es: ");
     console.log(word);

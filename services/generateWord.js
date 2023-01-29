@@ -3,8 +3,8 @@ import { TOPICS } from "constants/TOPICS";
 
 cohere.init(process.env.COHERE_API_KEY);
 
-export const generateWord = async ({ id, topic }) => {
-  const prompt = `This is a hangman game where a player wants to guess a hidden word about ${topic}. You have to generate a ${id} word about astronomy so that the player has to guess it..
+export const generateWord = async ({ difficult, topic }) => {
+  const prompt = `This is a hangman game where a player wants to guess a hidden word about ${topic}. You have to generate a ${difficult} word about astronomy so that the player has to guess it..
 --\nWord: ${TOPICS[topic][0]}
 --\nWord: ${TOPICS[topic][1]}
 --\nWord: ${TOPICS[topic][2]}
