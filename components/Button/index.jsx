@@ -1,10 +1,21 @@
 import styles from "./styles.module.css";
 
-export default function Button({ children, value, onClick, props, fitContent = false, disabled = false }) {
+export default function Button({
+  children,
+  value,
+  onClick,
+  props,
+  fitContent = false,
+  disabled = false,
+  addBorder = false,
+}) {
+  const classNames = [styles.btn];
+  if (addBorder) classNames.push(styles.addBorder);
+  if (fitContent) classNames.push(styles.btnFitContent);
   return (
     <button
       type="button"
-      className={`${styles.btn} ${fitContent ? styles.btnFitContent : null}`}
+      className={classNames.join(" ")}
       value={value}
       onClick={onClick}
       disabled={disabled}

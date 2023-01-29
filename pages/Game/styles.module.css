@@ -162,9 +162,14 @@
 
 .containerUtils {
   width: 100%;
-  /* background-color: red; */
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2.5rem;
+}
+
+@media (max-width: 420px) {
+  .containerUtils {
+    padding: 1rem 1.5rem;
+  }
 }

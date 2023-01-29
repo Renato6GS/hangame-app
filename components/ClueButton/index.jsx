@@ -28,7 +28,7 @@ export default function ClueButton({ word, numberOfClues }) {
   };
 
   return (
-    <Button onClick={giveClue} disabled={clues === 0} fitContent>
+    <Button onClick={giveClue} disabled={clues === 0} addBorder fitContent>
       Pistas: {clues}
     </Button>
   );
