@@ -13,13 +13,14 @@ export default function ClueButton({ word, numberOfClues }) {
 
   const giveClue = () => {
     if (clues === 0) return;
-    console.log(wordState);
-    const lengt = word.length;
-    const random = Math.floor(Math.random() * lengt);
+    const length = word.length;
+    const random = Math.floor(Math.random() * length);
     if (wordState[random] !== " ") return giveClue();
     const letter = word[random];
-    const wordStateCopy = [...wordState];
-    wordStateCopy[random] = letter;
+    const wordStateCopy = [...wordState].map((el, index) => {
+      if (word[index] === letter) return letter;
+      return el;
+    });
     setWordState(wordStateCopy);
     if (wordStateCopy.join("") === word.join("")) {
       showWinModal(t, router, word);

@@ -27,14 +27,9 @@ export default function ButtonLetter({ letter, word }) {
 
   useEffect(() => {
     if (wordState.join("").includes(letter)) {
-      console.log("Me ejecué");
-      console.log(letter);
       setDeactivateButton(true);
-      console.log(wordState.join(""));
     }
-    // console.log("effect del alfabeto");
-    // console.log(wordState.join(""));
-  }, [wordState]);
+  }, [wordState, letter]);
 
   const evaluateLetter = ({ value }) => {
     const wordString = wordState;
