@@ -24,6 +24,6 @@ export const useGame = ({ setLoading, wordRef, setWordState, setRenderAlphabet, 
       setLoading(false);
       setRenderAlphabet(true);
     }
-    setTries(6);
+    setTries(5);
   }, []);
 };

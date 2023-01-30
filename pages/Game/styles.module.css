@@ -58,14 +58,14 @@
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  border: solid black 3px;
+  border: solid var(--gray) 3px;
   position: absolute;
   top: 80px;
   left: 158px;
 }
 
 .leftArm {
-  border-left: solid black 3px;
+  border-left: solid var(--gray) 3px;
   height: 50px;
   position: absolute;
   top: 102px;
@@ -74,7 +74,7 @@
 }
 
 .rightArm {
-  border-left: solid black 3px;
+  border-left: solid var(--gray) 3px;
   height: 50px;
   position: absolute;
   top: 102px;
@@ -83,7 +83,7 @@
 }
 
 .body {
-  border-left: solid black 3px;
+  border-left: solid var(--gray) 3px;
   height: 80px;
   position: absolute;
   top: 110px;
@@ -91,7 +91,7 @@
 }
 
 .leftLeg {
-  border-left: solid black 3px;
+  border-left: solid var(--gray) 3px;
   height: 50px;
   position: absolute;
   top: 180px;
@@ -100,7 +100,7 @@
 }
 
 .rightLeg {
-  border-left: solid black 3px;
+  border-left: solid var(--gray) 3px;
   height: 50px;
   position: absolute;
   top: 180px;
