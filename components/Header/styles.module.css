@@ -21,11 +21,13 @@
 .arrow {
   margin-top: 0.3rem;
   position: absolute;
-  left: 25px;
+  left: 20px;
   cursor: pointer;
-  padding: 6px 8px;
+  padding: 6px 8px 6px 0px;
 }
 
-.arrow:hover {
-  color: var(--primary-color);
+@media (hover: hover) {
+  .arrow:hover {
+    color: var(--primary-color);
+  }
 }
