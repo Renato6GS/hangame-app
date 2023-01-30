@@ -21,7 +21,7 @@ export default function Layout({
           <Image src="/img/logo.png" width={218} height={218} alt="Logo Hangame" priority />
         </div>
       )}
-      {children}
+      <section className={styles.childrenContainer}>{children}</section>
       {footer && <Footer />}
     </main>
   );

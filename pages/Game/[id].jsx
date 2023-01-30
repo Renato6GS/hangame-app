@@ -135,14 +135,15 @@ export async function getServerSideProps(context) {
   //   title = 'ONE_PLAYER_MAIN_MENU';
   // }
 
-  const word = await localMultiplayerService({ difficult: id, locale, topic: topic || "Astronomy" });
-  if (word === false) {
-    return {
-      props: { word: [], title, id },
-    };
-  }
+  // const word = await localMultiplayerService({ difficult: id, locale, topic: topic || "Astronomy" });
+  // if (word === false) {
+  //   return {
+  //     props: { word: [], title, id },
+  //   };
+  // }
 
-  wordArray.push(...word.toUpperCase());
+  // wordArray.push(...word.toUpperCase());
+  wordArray.push(..."NANOTECHNOLOGY");
   const numberOfClues = id === "easy" ? 3 : id === "medium" ? 2 : 1;
 
   return {
