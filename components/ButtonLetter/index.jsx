@@ -71,7 +71,12 @@ export default function ButtonLetter({ letter, word }) {
   };
 
   return (
-    <button className={styles.letterContainer} onClick={handleClick} value={letter} disabled={deactivateButton}>
+    <button
+      type="button"
+      className={styles.letterContainer}
+      onClick={handleClick}
+      value={letter}
+      disabled={deactivateButton}>
       {letter}
     </button>
   );

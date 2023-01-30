@@ -55,6 +55,7 @@ export default function Game({ word = [], title = "a", id, numberOfClues = 0 }) 
         </section>
 
         {/* WORD HIDDEN */}
+        <small>Palabra de {word.length} sílabas</small>
         <section className={styles.wordContainer}>
           {wordState.map((w, i) => {
             return (
@@ -65,6 +66,7 @@ export default function Game({ word = [], title = "a", id, numberOfClues = 0 }) 
           })}
         </section>
 
+        {/* UTILS */}
         <div className={styles.containerUtils}>
           <span className={styles.titleTries}>Intentos: {tries + 1}</span>
           <ClueButton word={word} numberOfClues={numberOfClues} />
