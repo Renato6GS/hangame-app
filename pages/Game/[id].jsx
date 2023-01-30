@@ -1,10 +1,7 @@
 import Layout from "components/Layout";
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import Head from "next/head";
 import ButtonContext from "context/buttonContext";
-import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
-import { useRouter } from "next/router";
 
 import styles from "./styles.module.css";
 import ButtonLetter from "components/ButtonLetter";
@@ -13,50 +10,17 @@ import { localMultiplayerService } from "services/gameModesApi";
 import { useI18N } from "context/i18n";
 import Loader from "components/Loader";
 import ClueButton from "components/ClueButton";
+import { useErrorServer } from "hooks/useErrorServer";
+import { useGame } from "hooks/useGame";
 
 export default function Game({ word = [], title = "a", id, numberOfClues = 0 }) {
+  useErrorServer({ word });
   const { wordState, setWordState, tries, setTries } = useContext(ButtonContext);
-  const router = useRouter();
   const { t } = useI18N();
   const wordRef = useRef(word);
   const [loading, setLoading] = useState(false);
   const [renderAlphabet, setRenderAlphabet] = useState(false);
-
-  useEffect(function () {
-    if (word.length === 0) {
-      const MySwal = withReactContent(Swal);
-      MySwal.fire({
-        icon: "error",
-        title: t("SERVER_ERROR_MODAL"),
-        text: t("TEXT_ERROR_MODAL"),
-      }).then(() => {
-        router.push("/");
-      });
-    }
-  }, []);
-
-  useEffect(function () {
-    setLoading(true);
-    if (id.startsWith("N")) {
-      fetch(`/api/getAndDelete?q=${id}`)
-        .then((res) => res.json())
-        .then((wordArray) => {
-          wordRef.current = wordArray;
-          setWordState(wordArray.map(() => " "));
-          setLoading(false);
-        })
-        .catch((e) => {
-          setLoading(false);
-          console.error(e);
-          router.push("/");
-        });
-    } else {
-      setWordState(wordRef.current.map(() => " "));
-      setLoading(false);
-      setRenderAlphabet(true);
-    }
-    setTries(6);
-  }, []);
+  useGame({ setLoading, wordRef, setWordState, setRenderAlphabet, setTries, id });
 
   return (
     <>
@@ -143,7 +107,7 @@ export async function getServerSideProps(context) {
   // }
 
   // wordArray.push(...word.toUpperCase());
-  wordArray.push(..."NANOTECHNOLOGY");
+  wordArray.push(..."NANOTECNOLOGIA");
   const numberOfClues = id === "easy" ? 3 : id === "medium" ? 2 : 1;
 
   return {
