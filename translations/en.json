@@ -58,5 +58,6 @@
   "RETURN": "Go back",
   "SUMMARY_TITLE": "Summary",
   "RESUME": "Your options were:",
-  "START_GAME": "Start game"
+  "START_GAME": "Start game",
+  "NUMBER_OF_SYLLABLES": "Number of syllables:"
 }

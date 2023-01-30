@@ -54,8 +54,11 @@ export default function Game({ word = [], title = "a", id, numberOfClues = 0 }) 
           </div>
         </section>
 
-        {/* WORD HIDDEN */}
-        <small>Palabra de {word.length} sílabas</small>
+        {/* HIDDEN WORD */}
+        <small>
+          {t("NUMBER_OF_SYLLABLES")}
+          <strong> {word.length}</strong>
+        </small>
         <section className={styles.wordContainer}>
           {wordState.map((w, i) => {
             return (
@@ -101,15 +104,14 @@ export async function getServerSideProps(context) {
   //   title = 'ONE_PLAYER_MAIN_MENU';
   // }
 
-  // const word = await localMultiplayerService({ difficult: id, locale, topic: topic || "Astronomy" });
-  // if (word === false) {
-  //   return {
-  //     props: { word: [], title, id },
-  //   };
-  // }
+  const word = await localMultiplayerService({ difficult: id, locale, topic: topic || "Astronomy" });
+  if (word === false) {
+    return {
+      props: { word: [], title, id },
+    };
+  }
 
-  // wordArray.push(...word.toUpperCase());
-  wordArray.push(..."NANOTECNOLOGIA");
+  wordArray.push(...word.toUpperCase());
   const numberOfClues = id === "easy" ? 3 : id === "medium" ? 2 : 1;
 
   return {
