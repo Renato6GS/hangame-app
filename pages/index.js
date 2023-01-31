@@ -12,12 +12,13 @@ export default function Home() {
     <div className={styles.container}>
       <HeadSEO title={"SEO_MAIN_MENU"} description="The best Hangman game" />
       <Layout isMainMenu={true} footer={true}>
-        <section className={styles.mainManuContainer}>
+        <section className={styles.mainMenuContainer}>
           <h1 className={styles.title}>Hangame</h1>
           <p className={styles.instructions}>{t("TITLE_MAIN_MENU")}</p>
 
           <LayoutButton>
             <LinkToPage contain={t("ONE_PLAYER_MAIN_MENU")} href="/OnePlayer" />
+            <LinkToPage contain={"Crear palabra"} href="/TwoPlayers" />
             <LinkToPage contain={t("TWO_PLAYER_MAIN_MENU")} href="/TwoPlayers" />
             <LinkToPage contain={t("CHANGE_LANGUAGE")} href="/ChangeLanguage" />
           </LayoutButton>

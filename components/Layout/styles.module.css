@@ -1,11 +1,12 @@
 .mainContainer {
   background-color: var(--white);
   min-height: 800px;
-  /* height: 95vh; */
   margin: 3vh;
   border-radius: 40px;
   position: relative;
   max-width: 500px;
+  display: flex;
+  flex-direction: column;
 }
 
 .containerLogo {
