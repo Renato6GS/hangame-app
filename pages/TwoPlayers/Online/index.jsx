@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import Head from "next/head";
+import { useState } from "react";
 
 import styles from "./styles.module.css";
 import { validateCharacters, validateLeng } from "utils/inputValidations";
@@ -8,6 +7,7 @@ import Loader from "components/Loader";
 import { useI18N } from "context/i18n";
 import { useRouter } from "next/router";
 import { ArrowNarrowRightIcon, CopyIcon } from "components/icons";
+import HeadSEO from "components/HeadSEO";
 
 export default function Online({ API, CREATE_ROOM }) {
   const [keyword, setKeyword] = useState("");
@@ -66,11 +66,8 @@ export default function Online({ API, CREATE_ROOM }) {
 
   return (
     <>
-      <Head>
-        <title>{t("SEO_TWO_PLAYERS")}</title>
-        <meta name="description" content="Hangman game two players online" />
-        <link rel="icon" href="/logo.ico" />
-      </Head>
+      <HeadSEO title={"SEO_TWO_PLAYERS"} description="Hangman game two players online" />
+
       {loading && <Loader />}
       <Layout titleHeader={t("TWO_PLAYER_MAIN_MENU")} href="/TwoPlayers" largeScreen={true}>
         <h2 className={styles.title}>{t("INSTRUCTIONS_MULTIPLAYER")}</h2>

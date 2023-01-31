@@ -1,6 +1,5 @@
 import Layout from "components/Layout";
 import React, { useContext, useRef, useState } from "react";
-import Head from "next/head";
 import ButtonContext from "context/buttonContext";
 
 import styles from "./styles.module.css";
@@ -12,6 +11,7 @@ import Loader from "components/Loader";
 import ClueButton from "components/ClueButton";
 import { useErrorServer } from "hooks/useErrorServer";
 import { useGame } from "hooks/useGame";
+import HeadSEO from "components/HeadSEO";
 
 export default function Game({ word = [], title = "a", id, numberOfClues = 0 }) {
   useErrorServer({ word });
@@ -24,11 +24,8 @@ export default function Game({ word = [], title = "a", id, numberOfClues = 0 }) 
 
   return (
     <>
-      <Head>
-        <title>{t("SEO_GAME")}</title>
-        <link rel="icon" href="/logo.ico" />
-        <meta name="description" content="Hangman game two players online" />
-      </Head>
+      <HeadSEO title={"SEO_GAME"} description="Jangman game two players online" />
+
       {loading && <Loader />}
       <Layout
         titleHeader={t(title === "TWO_PLAYER_MAIN_MENU" ? "TWO_PLAYER_MAIN_MENU" : "ONE_PLAYER_MAIN_MENU")}

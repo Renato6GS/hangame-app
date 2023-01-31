@@ -1,7 +1,6 @@
 import Layout from "components/Layout";
 import LayoutButton from "components/LayoutButton";
 import React, { useState } from "react";
-import Head from "next/head";
 
 import styles from "./styles.module.css";
 import { useI18N } from "context/i18n";
@@ -11,6 +10,7 @@ import { DIFFICULTIES } from "constants/DIFFICULTIES";
 import { TOPICS_ARRAY } from "constants/TOPICS";
 import { useRouter } from "next/router";
 import SimpleButton from "components/Button/SimpleButton";
+import HeadSEO from "components/HeadSEO";
 
 export default function OnePlayer() {
   const { t } = useI18N();
@@ -38,11 +38,7 @@ export default function OnePlayer() {
 
   return (
     <>
-      <Head>
-        <title>{t("SEO_ONE_PLAYER")}</title>
-        <meta name="description" content="Hangman game with one player" />
-        <link rel="icon" href="/logo.ico" />
-      </Head>
+      <HeadSEO title={"SEO_ONE_PLAYER"} description="Hangman game with one player" />
       <Layout titleHeader={t("ONE_PLAYER_TITLE")} href="/">
         <LayoutButton>
           {steps === 0 ? (

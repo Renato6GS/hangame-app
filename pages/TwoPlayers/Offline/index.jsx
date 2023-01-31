@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import CryptoJS from "crypto-js";
 import { useRouter } from "next/router";
-import Head from "next/head";
 
 import styles from "./styles.module.css";
 import Layout from "components/Layout";
 import { validateCharacters, validateLeng } from "utils/inputValidations";
 import { useI18N } from "context/i18n";
 import { ArrowNarrowRightIcon } from "components/icons";
+import HeadSEO from "components/HeadSEO";
 
 export default function Offline() {
   const [keyword, setKeyword] = useState("");
@@ -35,11 +35,8 @@ export default function Offline() {
 
   return (
     <>
-      <Head>
-        <title>{t("SEO_TWO_PLAYERS")}</title>
-        <meta name="description" content="Hangman game two players offline" />
-        <link rel="icon" href="/logo.ico" />
-      </Head>
+      <HeadSEO title={"SEO_TWO_PLAYERS"} description="Hangman game two players offline" />
+
       <Layout titleHeader={t("TWO_PLAYER_MAIN_MENU")} href="/TwoPlayers">
         <h2 className={styles.title}>{t("INSTRUCTIONS_MULTIPLAYER")}</h2>
 

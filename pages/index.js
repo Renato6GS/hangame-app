@@ -1,21 +1,16 @@
 import Layout from "components/Layout";
-import Head from "next/head";
 import styles from "../styles/Home.module.css";
 
 import LayoutButton from "components/LayoutButton";
 import LinkToPage from "components/LinkToPage";
 import { useI18N } from "context/i18n";
+import HeadSEO from "components/HeadSEO";
 
 export default function Home() {
   const { t } = useI18N();
   return (
     <div className={styles.container}>
-      <Head>
-        <title>{t("SEO_MAIN_MENU")}</title>
-        <meta name="description" content="The best Hangman game" />
-        <link rel="icon" href="/logo.ico" />
-      </Head>
-
+      <HeadSEO title={"SEO_MAIN_MENU"} description="The best Hangman game" />
       <Layout isMainMenu={true} footer={true}>
         <section className={styles.mainManuContainer}>
           <h1 className={styles.title}>Hangame</h1>

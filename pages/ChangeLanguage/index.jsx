@@ -1,22 +1,18 @@
 import React from "react";
-import Head from "next/head";
 
 import styles from "./styles.module.css";
 import Layout from "components/Layout";
 import LayoutButton from "components/LayoutButton";
 import LinkToPage from "components/LinkToPage";
 import { useI18N } from "context/i18n";
+import HeadSEO from "components/HeadSEO";
 
 export default function ChangeLanguage() {
   const { t } = useI18N();
 
   return (
     <div className={styles.container}>
-      <Head>
-        <title>{t("SEO_MAIN_MENU")}</title>
-        <meta name="description" content="Hangman game - multi language" />
-        <link rel="icon" href="/logo.ico" />
-      </Head>
+      <HeadSEO title={"SEO_MAIN_MENU"} description="Hangman game - multi language" />
 
       <Layout footer={true} titleHeader={t("CHANGE_LANGUAGE")}>
         <section className={styles.mainManuContainer}>
