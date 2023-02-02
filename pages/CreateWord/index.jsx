@@ -11,8 +11,8 @@ export default function CreateWord() {
 
   return (
     <>
-      <HeadSEO title={"SEO_TWO_PLAYERS"} description="Hangman game two players offline" />
-      <Layout titleHeader={t("TWO_PLAYER_MAIN_MENU")} href="/TwoPlayers">
+      <HeadSEO title={"SEO_TWO_PLAYERS"} description="Hangman game create word" />
+      <Layout titleHeader={t("CREATE_WORD_TITLE")} href="/">
         <Title title="INSTRUCTIONS_MULTIPLAYER" />
         <CreateWordForm />
       </Layout>

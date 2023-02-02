@@ -18,7 +18,7 @@ export default function Layout({
       {titleHeader && <Header title={titleHeader} href={href} />}
       {isMainMenu && (
         <div className={styles.containerLogo}>
-          <Image src="/img/logo.png" width={218} height={218} alt="Logo Hangame" priority />
+          <Image src="/img/logo.png" width={218} height={218} alt="Logo Hangame" />
         </div>
       )}
       <section className={styles.childrenContainer}>{children}</section>

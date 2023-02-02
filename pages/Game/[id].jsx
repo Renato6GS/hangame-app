@@ -28,7 +28,7 @@ export default function Game({ word = [], title = "a", id, numberOfClues = 0 }) 
 
       {loading && <Loader />}
       <Layout
-        titleHeader={t(title === "TWO_PLAYER_MAIN_MENU" ? "TWO_PLAYER_MAIN_MENU" : "ONE_PLAYER_MAIN_MENU")}
+        titleHeader={t(title === "CREATE_WORD_TITLE" ? "CREATE_WORD_TITLE" : "ONE_PLAYER_MAIN_MENU")}
         largeScreen={true}>
         <div>
           <h2 className={styles.title}>{t("GUESS_WORD")}</h2>
@@ -105,7 +105,7 @@ export async function getServerSideProps(context) {
 
   const { id, topic } = query;
   let wordArray = [];
-  let title = "TWO_PLAYER_MAIN_MENU";
+  let title = "CREATE_WORD_TITLE";
   let word = "";
 
   if (id.startsWith("C")) {
@@ -113,6 +113,7 @@ export async function getServerSideProps(context) {
   } else if (id.startsWith("N")) {
     wordArray = ["it works"];
   } else {
+    title = "ONE_PLAYER_MAIN_MENU";
     word = await localMultiplayerService({ difficult: id, locale, topic: topic || "Astronomy" });
     if (word === false) {
       return {

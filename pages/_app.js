@@ -14,7 +14,7 @@ const DefaultHeadApp = () => {
       <link rel="icon" href="/favicon.ico" />
       <meta property="og:title" content="Hangame - Juego del ahorcado" />
       <meta property="og:site_name" content="Hangman" />
-      <meta property="og:url" content="https://hangame-app.vercel.app/" />
+      <meta property="og:url" content="https://hangame.app/" />
       <meta property="og:description" content="" />
       <meta property="og:type" content="website" />
       <meta property="og:image" content="/image_site.png"></meta>
