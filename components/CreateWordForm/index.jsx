@@ -42,7 +42,7 @@ export default function CreateWordForm() {
     )
       return;
 
-    const ciphertext = CryptoJS.AES.encrypt(keyword, "secret");
+    const ciphertext = CryptoJS.AES.encrypt(keyword.trim(), "secret");
     const encodeWord = encodeURIComponent(ciphertext.toString());
     router.push(`/Game/C${encodeWord}`);
   };
@@ -91,14 +91,12 @@ export default function CreateWordForm() {
     )
       return;
 
-    const ciphertext = CryptoJS.AES.encrypt(keyword, "secret");
+    const ciphertext = CryptoJS.AES.encrypt(keyword.trim(), "secret");
     const encodeWord = encodeURIComponent(ciphertext.toString());
-    console.log(encodeWord);
     try {
       await navigator.share({
         title: "Adivina la palabra",
         text: "Juega adivina la palabra conmigo",
-        // url: `https://adivinalapalabra.vercel.app/Game/C${encodeWord}`,
         url: `https://www.hangame.app/Game/C${encodeWord}`,
       });
     } catch (error) {

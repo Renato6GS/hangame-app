@@ -20,7 +20,12 @@ export const useGame = ({ setLoading, wordRef, setWordState, setRenderAlphabet, 
           router.push("/");
         });
     } else {
-      setWordState(wordRef.current.map(() => " "));
+      setWordState(
+        wordRef.current.map((w) => {
+          if (w !== " ") return " ";
+          return "SPACE";
+        })
+      );
       setLoading(false);
       setRenderAlphabet(true);
     }

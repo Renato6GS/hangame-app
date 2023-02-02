@@ -13,10 +13,14 @@ export default function ClueButton({ word, numberOfClues }) {
 
   const giveClue = () => {
     if (clues === 0) return;
+    word = word.map((el) => {
+      if (el === " ") return "SPACE";
+      return el;
+    });
     const length = word.length;
-    const random = Math.floor(Math.random() * length);
-    if (wordState[random] !== " ") return giveClue();
-    const letter = word[random];
+    const randomIndex = Math.floor(Math.random() * length);
+    if (wordState[randomIndex] !== " " || wordState[randomIndex] === "SPACE") return giveClue();
+    const letter = word[randomIndex];
     const wordStateCopy = [...wordState].map((el, index) => {
       if (word[index] === letter) return letter;
       return el;

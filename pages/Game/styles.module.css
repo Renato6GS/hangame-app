@@ -112,11 +112,11 @@
   margin: 0 auto;
   width: 100%;
   overflow-x: scroll;
-  padding: 1.25rem 2.5rem;
-  display: grid;
-  grid-template-columns: repeat(auto, 1fr);
-  grid-template-rows: 1;
-  grid-gap: 10px;
+  padding: 1.25rem 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 15px;
   background-color: white;
   --shadow-color: 0deg 0% 63%;
   --shadow-elevation-high: 0px 0.1px 0.1px hsl(var(--shadow-color) / 0.34),
@@ -150,14 +150,17 @@
   border-radius: 5px;
 }
 
-.line {
+.line,
+.lineEmpty {
   border-bottom: solid 3px black;
-  grid-column: 1fr;
-  grid-row: 1;
-  min-width: 20px;
+  min-width: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.lineEmpty {
+  border-bottom-color: transparent;
 }
 
 .wordLetter {

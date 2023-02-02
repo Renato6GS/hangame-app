@@ -53,14 +53,29 @@ export default function Game({ word = [], title = "a", id, numberOfClues = 0 }) 
 
         {/* HIDDEN WORD */}
         <small>
-          {t("NUMBER_OF_SYLLABLES")}
-          <strong> {word.length}</strong>
+          {wordState.some((s) => s === "SPACE") ? (
+            <>
+              {t("NUMBER_OF_WORDS")}
+              <strong> {wordState.filter((s) => s === "SPACE").length + 1}</strong>
+            </>
+          ) : (
+            <>
+              {t("NUMBER_OF_SYLLABLES")}
+              <strong> {word.length}</strong>
+            </>
+          )}
         </small>
         <section className={styles.wordContainer}>
           {wordState.map((w, i) => {
             return (
-              <div className={styles.line} key={i}>
-                <p className={styles.wordLetter}>{w}</p>
+              <div key={i}>
+                {w === "SPACE" ? (
+                  <div className={styles.lineEmpty}></div>
+                ) : (
+                  <div className={styles.line}>
+                    <p className={styles.wordLetter}>{w}</p>
+                  </div>
+                )}
               </div>
             );
           })}
@@ -94,7 +109,6 @@ export async function getServerSideProps(context) {
   let word = "";
 
   if (id.startsWith("C")) {
-    // wordArray = offlineService({ id });
     word = offlineService({ id });
   } else if (id.startsWith("N")) {
     wordArray = ["it works"];
