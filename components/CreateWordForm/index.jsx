@@ -99,7 +99,7 @@ export default function CreateWordForm() {
         title: "Adivina la palabra",
         text: "Juega adivina la palabra conmigo",
         // url: `https://adivinalapalabra.vercel.app/Game/C${encodeWord}`,
-        url: `https://hangame.app/Game/C${encodeWord}`,
+        url: `https://www.hangame.app/Game/C${encodeWord}`,
       });
     } catch (error) {
       console.log(error);
