@@ -62,5 +62,6 @@
   "RESUME": "Tus opciones fueron:",
   "START_GAME": "Empezar",
   "NUMBER_OF_SYLLABLES": "Número de sílabas:",
-  "NUMBER_OF_WORDS": "Número de palabras:"
+  "NUMBER_OF_WORDS": "Número de palabras:",
+  "CREATE_WORD": "Crear palabra"
 }
