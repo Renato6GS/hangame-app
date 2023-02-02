@@ -9,7 +9,7 @@ export default function Footer() {
     <footer className={styles.footer}>
       <h4 className={styles.description}>
         {t("AUTHOR")}
-        <a className={styles.link} href="https://github.com/renato6gs">
+        <a className={styles.link} href="https://www.renatogranados.dev" target="_blank" rel="noopener noreferrer">
           @Renato6GS
         </a>
       </h4>
