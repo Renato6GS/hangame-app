@@ -5,7 +5,7 @@ import ButtonContext from "context/buttonContext";
 import styles from "./styles.module.css";
 import ButtonLetter from "components/ButtonLetter";
 import { ALPHABET } from "constants/alphabet";
-import { localMultiplayerService } from "services/gameModesApi";
+import { localMultiplayerService, offlineService } from "services/gameModesApi";
 import { useI18N } from "context/i18n";
 import Loader from "components/Loader";
 import ClueButton from "components/ClueButton";
@@ -91,21 +91,20 @@ export async function getServerSideProps(context) {
   const { id, topic } = query;
   let wordArray = [];
   let title = "TWO_PLAYER_MAIN_MENU";
+  let word = "";
 
-  // if (id.startsWith('O')) {
-  //   wordArray = offlineService({ id });
-  // } else if (id.startsWith('N')) {
-  //   wordArray = ['it works'];
-  // } else {
-  //   wordArray = await localMultiplayerService({ id, locale });
-  //   title = 'ONE_PLAYER_MAIN_MENU';
-  // }
-
-  const word = await localMultiplayerService({ difficult: id, locale, topic: topic || "Astronomy" });
-  if (word === false) {
-    return {
-      props: { word: [], title, id },
-    };
+  if (id.startsWith("C")) {
+    // wordArray = offlineService({ id });
+    word = offlineService({ id });
+  } else if (id.startsWith("N")) {
+    wordArray = ["it works"];
+  } else {
+    word = await localMultiplayerService({ difficult: id, locale, topic: topic || "Astronomy" });
+    if (word === false) {
+      return {
+        props: { word: [], title, id },
+      };
+    }
   }
 
   wordArray.push(...word.toUpperCase());
