@@ -8,7 +8,7 @@ export default function Button({
   fitContent = false,
   disabled = false,
   addBorder = false,
-  type = "submit",
+  type = "button",
 }) {
   const classNames = [styles.btn];
   if (addBorder) classNames.push(styles.addBorder);
