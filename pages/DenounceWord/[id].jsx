@@ -52,11 +52,11 @@ export default function DenounceWord({ word }) {
           <h3>{t("CATEGORIES")}</h3>
           <div className={styles.categoriesContainer}>
             <div>
-              <input type="radio" name="category" id="typo" required />
+              <input type="radio" name="category" id="typo" value="typo" required />
               <label htmlFor="typo">{t("DENOUNCE_TYPO")}</label>
             </div>
             <div>
-              <input type="radio" name="category" id="offensive" required />
+              <input type="radio" name="category" id="offensive" value="offensive" required />
               <label htmlFor="offensive">{t("DENOUNCE_INAPROPRIATE")}</label>
             </div>
           </div>
