@@ -63,5 +63,6 @@
   "START_GAME": "Start game",
   "NUMBER_OF_SYLLABLES": "Number of syllables:",
   "NUMBER_OF_WORDS": "Number of words:",
-  "CREATE_WORD": "Create word"
+  "CREATE_WORD": "Create word",
+  "DENOUNCE_WORD": "Denounce word"
 }

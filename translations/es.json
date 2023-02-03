@@ -63,5 +63,6 @@
   "START_GAME": "Empezar",
   "NUMBER_OF_SYLLABLES": "Número de sílabas:",
   "NUMBER_OF_WORDS": "Número de palabras:",
-  "CREATE_WORD": "Crear palabra"
+  "CREATE_WORD": "Crear palabra",
+  "DENOUNCE_WORD": "Denunciar palabra"
 }
