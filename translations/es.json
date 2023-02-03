@@ -78,5 +78,12 @@
   "DENOUNCE_SENT": "Denuncia enviada",
   "DENOUNCE_SENT_DESCRIPTION": "Gracias por tu denuncia, revisaré y tomaré las medidas necesarias para corregir este problema.",
   "ERROR": "Error",
-  "DENOUNCE_ERROR_DESCRIPTION": "Ha ocurrido un error, por favor intenta de nuevo más tarde."
+  "DENOUNCE_ERROR_DESCRIPTION": "Ha ocurrido un error, por favor intenta de nuevo más tarde.",
+  "404_PAGE_NOT_FOUND": "404 - Página no encontrada",
+  "404_PAGE_NOT_FOUND_DESCRIPTION_1": "Parece ser que la palabra no es la única perdida 😋",
+  "404_PAGE_NOT_FOUND_DESCRIPTION_2": "Siento mucho que tengas que haber visitado esta página.",
+  "404_PAGE_NOT_FOUND_DESCRIPTION_3": "Como compensación, ¿Qué te parece si le das al siguiente botón? ¿Quizás sea un helado de vainilla 🍨?",
+  "404_PAGE_NOT_FOUND_BUTTON_YES": "¡Sí!, pero, ¿sólo uno 😢? 🍧🍨🍦",
+  "404_PAGE_NOT_FOUND_BUTTON_NO": "No, suélteme del brazo señor 💀",
+  "404_PAGE_NOT_FOUND_LINK": "CU2FsdGVkX1%2F6%2Ft1I6e%2FrMxvahiG6Tx5EH%2BPt1XPVdec%3D"
 }

@@ -78,5 +78,12 @@
   "DENOUNCE_SENT": "Denounce success",
   "DENOUNCE_SENT_DESCRIPTION": "Thank you for your time. I will review it and take the necessary measures to correct this problem.",
   "ERROR": "Error",
-  "DENOUNCE_ERROR_DESCRIPTION": "An error has occurred, please try again later."
+  "DENOUNCE_ERROR_DESCRIPTION": "An error has occurred, please try again later.",
+  "404_PAGE_NOT_FOUND": "404 - Page not found",
+  "404_PAGE_NOT_FOUND_DESCRIPTION_1": "It seems that the word is not the only one lost 😋",
+  "404_PAGE_NOT_FOUND_DESCRIPTION_2": "I'm so sorry you had to visit this page.",
+  "404_PAGE_NOT_FOUND_DESCRIPTION_3": "As compensation, what do you think if you hit the next button? Maybe it's a vanilla ice cream 🍨?",
+  "404_PAGE_NOT_FOUND_BUTTON_YES": "Yes!, but only one 😢? 🍧🍨🍦",
+  "404_PAGE_NOT_FOUND_BUTTON_NO": "No, let go of my arm sir 💀",
+  "404_PAGE_NOT_FOUND_LINK": "CU2FsdGVkX1%2BNalzWcwgvZco%2FrSkkDLU%2FvR6VlYV57pA%3D"
 }
