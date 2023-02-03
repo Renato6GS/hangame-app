@@ -66,6 +66,7 @@
   "NUMBER_OF_WORDS": "Número de palabras:",
   "CREATE_WORD": "Crear palabra",
   "DENOUNCE_WORD": "Denunciar palabra",
+  "DENOUNCE_WORD_SEO": "Denunciar palabra debido a que es inapropiada o está mal escrita",
   "DENOUNCE_DESCRIPTION_1": "Como principal desarrollador de esta web (hangame.app) toma parte del disfrute y entretenimiento al utilizar una inteligencia artificial (desarrollada por co:here) como base fundamental del juego para la generación de palabras, soy consciente de que en ocasiones puede generar palabras inadecuadas o incorrectas.",
   "DENOUNCE_DESCRIPTION_2": "Es por ello, que agradezco que tome su tiempo para denunciar esta palabra '${1}' y así poder tomar las medidas correctivas.",
   "CATEGORIES": "Categorías",
@@ -73,5 +74,9 @@
   "DENOUNCE_INAPROPRIATE": "La palabra es inapropiada",
   "COMMENTS": "Comentarios",
   "COMMENTS_PLACEHOLDER": "Agradezco si me da una breve explicación de la denuncia para tomar las medidas pertinentes",
-  "SEND": "Enviar"
+  "SEND": "Enviar",
+  "DENOUNCE_SENT": "Denuncia enviada",
+  "DENOUNCE_SENT_DESCRIPTION": "Gracias por tu denuncia, revisaré y tomaré las medidas necesarias para corregir este problema.",
+  "ERROR": "Error",
+  "DENOUNCE_ERROR_DESCRIPTION": "Ha ocurrido un error, por favor intenta de nuevo más tarde."
 }

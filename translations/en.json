@@ -66,6 +66,7 @@
   "NUMBER_OF_WORDS": "Number of words:",
   "CREATE_WORD": "Create word",
   "DENOUNCE_WORD": "Denounce word",
+  "DENOUNCE_WORD_SEO": "Report word because it is inappropriate or misspelled",
   "DENOUNCE_DESCRIPTION_1": "As the main developer of this website (hangame.app) takes part in the enjoyment and entertainment by using artificial intelligence (developed by co:here) as the fundamental basis of the game for the generation of words, I am aware that sometimes it can generate inappropriate words or incorrect.",
   "DENOUNCE_DESCRIPTION_2": "That is why I appreciate you taking your time to denounce this word '${1}' and thus be able to take corrective measures.",
   "CATEGORIES": "Categories",
@@ -73,5 +74,9 @@
   "DENOUNCE_INAPROPRIATE": "The word is inappropriate",
   "COMMENTS": "Comments",
   "COMMENTS_PLACEHOLDER": "I appreciate if you give me a brief explanation of the complaint to take the appropriate measures",
-  "SEND": "Send"
+  "SEND": "Send",
+  "DENOUNCE_SENT": "Denounce success",
+  "DENOUNCE_SENT_DESCRIPTION": "Thank you for your time. I will review it and take the necessary measures to correct this problem.",
+  "ERROR": "Error",
+  "DENOUNCE_ERROR_DESCRIPTION": "An error has occurred, please try again later."
 }
