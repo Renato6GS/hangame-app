@@ -5,9 +5,11 @@ import { showModal } from "utils/modals";
 import { useRouter } from "next/router";
 
 import styles from "./styles.module.css";
+import { useI18N } from "context/i18n";
 
 export default function DenounceWord({ word }) {
   const router = useRouter();
+  const { t } = useI18N();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -37,38 +39,33 @@ export default function DenounceWord({ word }) {
     <Layout>
       <form className={styles.form} onSubmit={handleSubmit}>
         <Link href="/">
-          <a className={styles.return}>Volver al menú principal</a>
+          <a className={styles.return}>{t("RETURN_MAIN_MENU")}</a>
         </Link>
-        <h1>DenounceWord: {word}</h1>
-        <p>
-          Como principal desarrollador de esta web (hangame.app) toma parte del disfrute y entretenimiento al utilizar
-          una inteligencia artificial (desarrollada por co:here) como base fundamental del juego para la generación de
-          palabras, soy consciente de que en ocasiones puede generar palabras inadecuadas o incorrectas.
-        </p>
-        <p>
-          Es por ello, que agradezco que tome su tiempo para denunciar esta palabra <strong>{word}</strong> y así poder
-          tomar las medidas correctivas.
-        </p>
-        <h3>Categorías</h3>
+        <h1>
+          {t("DENOUNCE_WORD")}: &quot;{word}&quot;
+        </h1>
+        <p>{t("DENOUNCE_DESCRIPTION_1")}</p>
+        <p>{t("DENOUNCE_DESCRIPTION_2", word)}</p>
+        <h3>{t("CATEGORIES")}</h3>
         <div className={styles.categoriesContainer}>
           <div>
             <input type="radio" name="category" id="typo" required />
-            <label htmlFor="typo">La palabra está mal escrita</label>
+            <label htmlFor="typo">{t("DENOUNCE_TYPO")}</label>
           </div>
           <div>
             <input type="radio" name="category" id="offensive" required />
-            <label htmlFor="offensive">La palabra es inapropiada</label>
+            <label htmlFor="offensive">{t("DENOUNCE_INAPROPRIATE")}</label>
           </div>
         </div>
-        <h3>Comentarios</h3>
+        <h3>{t("COMMENTS")}</h3>
         <textarea
-          placeholder="Agradezco si me da una breve explicación de la denuncia para entender mejor"
+          placeholder={t("COMMENTS_PLACEHOLDER")}
           cols="30"
           rows="6"
           name="commentary"
           maxLength={200}
           required></textarea>
-        <button type="submit">Enviar</button>
+        <button type="submit">{t("SEND")}</button>
       </form>
     </Layout>
   );
