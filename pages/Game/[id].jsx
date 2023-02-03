@@ -53,10 +53,10 @@ export default function Game({ word = [], title = "a", id, numberOfClues = 0 }) 
 
         {/* HIDDEN WORD */}
         <small>
-          {wordState.some((s) => s === "SPACE") ? (
+          {wordState.some((s) => s === "_") ? (
             <>
               {t("NUMBER_OF_WORDS")}
-              <strong> {wordState.filter((s) => s === "SPACE").length + 1}</strong>
+              <strong> {wordState.filter((s) => s === "_").length + 1}</strong>
             </>
           ) : (
             <>
@@ -69,7 +69,7 @@ export default function Game({ word = [], title = "a", id, numberOfClues = 0 }) 
           {wordState.map((w, i) => {
             return (
               <div key={i}>
-                {w === "SPACE" ? (
+                {w === "_" ? (
                   <div className={styles.lineEmpty}></div>
                 ) : (
                   <div className={styles.line}>
@@ -110,8 +110,6 @@ export async function getServerSideProps(context) {
 
   if (id.startsWith("C")) {
     word = offlineService({ id });
-  } else if (id.startsWith("N")) {
-    wordArray = ["it works"];
   } else {
     title = "ONE_PLAYER_MAIN_MENU";
     word = await localMultiplayerService({ difficult: id, locale, topic: topic || "Astronomy" });

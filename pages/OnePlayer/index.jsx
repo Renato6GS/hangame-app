@@ -27,7 +27,6 @@ export default function OnePlayer() {
   };
 
   const handleClickTopic = (e) => {
-    console.log(e.target.value);
     setGameOptions((acc) => ({ ...acc, topic: e.target.value }));
     setSteps((acc) => acc + 1);
   };

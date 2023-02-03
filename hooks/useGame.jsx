@@ -23,7 +23,7 @@ export const useGame = ({ setLoading, wordRef, setWordState, setRenderAlphabet, 
       setWordState(
         wordRef.current.map((w) => {
           if (w !== " ") return " ";
-          return "SPACE";
+          return "_";
         })
       );
       setLoading(false);

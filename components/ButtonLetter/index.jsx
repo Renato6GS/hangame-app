@@ -60,7 +60,7 @@ export default function ButtonLetter({ letter, word }) {
       });
     }
 
-    if (wordState.join("") === word.join("")) showWinModal(t, router, word);
+    if (wordState.join("").replaceAll("_", " ") === word.join("")) showWinModal(t, router, word);
     else if (tries === 0 && !found) showLoseModal(t, router, word);
   };
 

@@ -21,19 +21,20 @@ export const showModalAndRedirect = ({ type = "success", title = "Emtpy title", 
 };
 
 export const footerResponse = (t, word) => {
-  return `<div style="display: flex; flex-direction: column; width: fit-content; justify-content: center; text-align: center"><span>
-    ${t("ANSWER")}: ${word.join("")}
-  </span><a href="/DenounceWord">${t("DENOUNCE_WORD")}</a></div>`;
+  return `<div style="display: flex; flex-direction: column; width: fit-content; justify-content: center; text-align: center"><strong>
+    ${t("ANSWER")}: ${word}
+  </strong><a style="color: #0099ff" href="/DenounceWord/${word}">${t("DENOUNCE_WORD")}</a></div>`;
 };
 
 export const showWinModal = (t, router, word) => {
+  word = word.join("").replaceAll("_", " ");
   confetti();
   const MySwal = withReactContent(Swal);
   MySwal.fire({
     icon: "success",
     title: t("YOU_WON"),
     text: t("CONGRATULATIONS"),
-    footer: footerResponse(t, router, word),
+    footer: footerResponse(t, word),
   }).then(() => {
     router.push("/");
   });
