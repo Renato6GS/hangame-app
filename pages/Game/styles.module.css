@@ -109,15 +109,16 @@
 }
 
 .wordContainer {
-  margin: 0 auto;
   width: 100%;
+  margin: 0 auto;
+  background-color: white;
   overflow-x: scroll;
   padding: 1.25rem 1rem;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  align-items: center;
+  /* justify-content: center; */
   gap: 15px;
-  background-color: white;
   --shadow-color: 0deg 0% 63%;
   --shadow-elevation-high: 0px 0.1px 0.1px hsl(var(--shadow-color) / 0.34),
     -0.1px 0.5px 0.6px -0.4px hsl(var(--shadow-color) / 0.34), -0.1px 1px 1.1px -0.7px hsl(var(--shadow-color) / 0.34),
@@ -148,6 +149,10 @@
 .wordContainer::-webkit-scrollbar-thumb {
   background-color: darkgrey;
   border-radius: 5px;
+}
+
+.linesContainer {
+  flex: 1;
 }
 
 .line,

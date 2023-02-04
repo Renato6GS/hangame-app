@@ -68,7 +68,7 @@ export default function Game({ word = [], title = "a", id, numberOfClues = 0 }) 
         <section className={styles.wordContainer}>
           {wordState.map((w, i) => {
             return (
-              <div key={i}>
+              <div className={styles.linesContainer} key={i}>
                 {w === "_" ? (
                   <div className={styles.lineEmpty}></div>
                 ) : (
