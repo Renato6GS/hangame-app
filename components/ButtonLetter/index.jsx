@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import Swal from "sweetalert2";
 import { useRouter } from "next/router";
+import { Howl } from "howler";
 
 import styles from "./styles.module.css";
 import ButtonContext from "context/buttonContext";
@@ -11,7 +12,7 @@ const Toast = Swal.mixin({
   toast: true,
   position: "bottom",
   showConfirmButton: false,
-  timer: 1300,
+  timer: 1800,
   timerProgressBar: true,
   didOpen: (toast) => {
     toast.addEventListener("mouseenter", Swal.stopTimer);
@@ -52,8 +53,12 @@ export default function ButtonLetter({ letter, word }) {
         icon: "success",
         title: t("YOU_R_RIGHT"),
       });
+      const sound = new Howl({ src: "/sounds/little-win.mp3", volume: 1.5 });
+      sound.play();
     } else {
       setTries((tries) => tries - 1);
+      const sound = new Howl({ src: "/sounds/little-fail.mp3", volume: 0.3 });
+      sound.play();
       Toast.fire({
         icon: "error",
         title: t("YOU_R_WRONG"),
