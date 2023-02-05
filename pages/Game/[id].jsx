@@ -15,7 +15,7 @@ import HeadSEO from "components/HeadSEO";
 import GenerateClueButton from "components/GenerateClueButton/GenerateClueButton";
 import { useClue } from "hooks/useClue";
 
-export default function Game({ word = [], title = "", id, numberOfClues = 0, topic = "", isgenerateClue, locale }) {
+export default function Game({ word = [], title = "", numberOfClues = 0, topic = "", isgenerateClue, locale }) {
   useErrorServer({ word });
   const { clue, clueLoading } = useClue({ isgenerateClue, topic, word, locale });
   const { wordState, setWordState, tries, setTries } = useContext(ButtonContext);
@@ -23,7 +23,7 @@ export default function Game({ word = [], title = "", id, numberOfClues = 0, top
   const wordRef = useRef(word);
   const [loading, setLoading] = useState(false);
   const [renderAlphabet, setRenderAlphabet] = useState(false);
-  useGame({ setLoading, wordRef, setWordState, setRenderAlphabet, setTries, id });
+  useGame({ setLoading, wordRef, setWordState, setRenderAlphabet, setTries, locale });
 
   return (
     <>
@@ -111,7 +111,6 @@ export default function Game({ word = [], title = "", id, numberOfClues = 0, top
 export async function getServerSideProps(context) {
   const { query, locale, params } = context;
 
-  // const { id, topic } = query;
   const { id } = params;
   const { topic = false } = query;
   let wordArray = [];
@@ -123,7 +122,6 @@ export async function getServerSideProps(context) {
     word = offlineService({ id });
     isgenerateClue = false;
   } else if (id !== "favicon.ico") {
-    // HELP: this is a hack to avoid the favicon.ico request lol
     title = "ONE_PLAYER_MAIN_MENU";
     word = await localMultiplayerService({ difficult: id, locale, topic: topic || "Astronomy" });
     if (word === false) {
@@ -135,12 +133,6 @@ export async function getServerSideProps(context) {
 
   wordArray.push(...word.toUpperCase());
   const numberOfClues = id === "easy" ? 3 : id === "medium" ? 2 : 1;
-
-  console.log("el id en ssr es");
-  console.log(id);
-
-  console.log("el topic en ssr es");
-  console.log(topic);
 
   return {
     props: { word: wordArray, title, id, numberOfClues, topic, isgenerateClue, locale },

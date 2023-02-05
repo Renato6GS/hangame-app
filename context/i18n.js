@@ -9,7 +9,7 @@ const I18NContext = createContext();
 const languages = { es, en };
 
 export function I18nProvider({ children }) {
-  const { locale } = useRouter();
+  let { locale } = useRouter();
 
   const t = useCallback(
     (key, ...args) => {

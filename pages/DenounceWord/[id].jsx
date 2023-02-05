@@ -77,10 +77,20 @@ export default function DenounceWord({ word }) {
 
 export async function getServerSideProps(context) {
   const { id: word } = context.params;
+  const { locale } = context.query;
 
   if (word.length === 0) {
     return {
       notFound: true,
+    };
+  }
+
+  if (locale === "es") {
+    return {
+      redirect: {
+        destination: `/es/DenounceWord/${word}`,
+        permanent: false,
+      },
     };
   }
 
