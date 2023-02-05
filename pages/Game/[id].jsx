@@ -15,7 +15,15 @@ import HeadSEO from "components/HeadSEO";
 import GenerateClueButton from "components/GenerateClueButton/GenerateClueButton";
 import { useClue } from "hooks/useClue";
 
-export default function Game({ word = [], title = "", numberOfClues = 0, topic = "", isgenerateClue, locale }) {
+export default function Game({
+  word = [],
+  title = "",
+  numberOfClues = 0,
+  topic = "",
+  isgenerateClue,
+  locale,
+  showDenounceButton,
+}) {
   useErrorServer({ word });
   const { clue, clueLoading } = useClue({ isgenerateClue, topic, word, locale });
   const { wordState, setWordState, tries, setTries } = useContext(ButtonContext);
@@ -23,7 +31,7 @@ export default function Game({ word = [], title = "", numberOfClues = 0, topic =
   const wordRef = useRef(word);
   const [loading, setLoading] = useState(false);
   const [renderAlphabet, setRenderAlphabet] = useState(false);
-  useGame({ setLoading, wordRef, setWordState, setRenderAlphabet, setTries, locale });
+  useGame({ setLoading, wordRef, setWordState, setRenderAlphabet, setTries, locale, showDenounceButton });
 
   return (
     <>
@@ -117,11 +125,13 @@ export async function getServerSideProps(context) {
   let title = "CREATE_WORD_TITLE";
   let word = "";
   let isgenerateClue = true;
+  let showDenounceButton = true;
 
   if (id.startsWith("C")) {
     word = offlineService({ id });
     isgenerateClue = false;
-  } else if (id !== "favicon.ico") {
+    showDenounceButton = false;
+  } else {
     title = "ONE_PLAYER_MAIN_MENU";
     word = await localMultiplayerService({ difficult: id, locale, topic: topic || "Astronomy" });
     if (word === false) {
@@ -135,6 +145,6 @@ export async function getServerSideProps(context) {
   const numberOfClues = id === "easy" ? 3 : id === "medium" ? 2 : 1;
 
   return {
-    props: { word: wordArray, title, id, numberOfClues, topic, isgenerateClue, locale },
+    props: { word: wordArray, title, id, numberOfClues, topic, isgenerateClue, locale, showDenounceButton },
   };
 }

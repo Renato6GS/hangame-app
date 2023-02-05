@@ -9,7 +9,7 @@ export default function GenerateClueButton({ clueLoading, clue }) {
     Swal.fire({
       icon: "question",
       title: t("CLUE"),
-      html: `${clueLoading ? t("LOADING_CLUE") : `<strong>Resultado</strong>: ${clue}`}`,
+      html: `${clueLoading ? t("LOADING_CLUE") : `<strong>${t("ANSWER")}</strong>: ${clue}`}`,
     });
   };
 

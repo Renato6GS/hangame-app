@@ -21,27 +21,32 @@ export const showModalAndRedirect = ({ type = "success", title = "Emtpy title", 
 };
 
 export const footerResponse = (t, word) => {
-  const localeSelected = localStorage.getItem("localeSelected");
-  const locale = localeSelected === "en" ? localeSelected : localeSelected;
+  let denounceButton = "";
+  const showDenounceButton = localStorage.getItem("showDenounceButton") === "true";
+
+  if (showDenounceButton) {
+    const localeSelected = localStorage.getItem("localeSelected");
+    const locale = localeSelected === "en" ? localeSelected : localeSelected;
+    denounceButton = `<a style="color: #0099ff" href="/DenounceWord/${word}?locale=${locale}">${t(
+      "DENOUNCE_WORD"
+    )}</a>`;
+  }
 
   return `<div style="display: flex; flex-direction: column; width: fit-content; justify-content: center; text-align: center"><strong>
-    ${t("ANSWER")}: ${word}
-  </strong><a style="color: #0099ff" href="/DenounceWord/${word}?locale=${locale}">${t("DENOUNCE_WORD")}</a></div>`;
+    ${t("ANSWER")}: ${word}</strong>${denounceButton}</div>`;
 };
 
 export const showWinModal = (t, router, word) => {
   word = word.join("").replaceAll("_", " ");
-  const MySwal = withReactContent(Swal);
-  MySwal.fire({
+  confetti();
+  Swal.fire({
     icon: "success",
     title: t("YOU_WON"),
     text: t("CONGRATULATIONS"),
     footer: footerResponse(t, word),
-    backdrop: confetti(),
   }).then(() => {
     router.push("/");
   });
-  // confetti();
 };
 
 export const showLoseModal = (t, router, word) => {

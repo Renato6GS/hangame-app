@@ -1,6 +1,14 @@
 import { useEffect } from "react";
 
-export const useGame = ({ setLoading, wordRef, setWordState, setRenderAlphabet, setTries, locale }) => {
+export const useGame = ({
+  setLoading,
+  wordRef,
+  setWordState,
+  setRenderAlphabet,
+  setTries,
+  locale,
+  showDenounceButton,
+}) => {
   useEffect(() => {
     setLoading(true);
     setWordState(
@@ -13,5 +21,6 @@ export const useGame = ({ setLoading, wordRef, setWordState, setRenderAlphabet, 
     setRenderAlphabet(true);
     setTries(5);
     localStorage.setItem("localeSelected", locale);
+    localStorage.setItem("showDenounceButton", showDenounceButton);
   }, []);
 };
