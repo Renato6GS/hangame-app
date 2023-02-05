@@ -1,5 +1,5 @@
 import Layout from "components/Layout";
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import ButtonContext from "context/buttonContext";
 
 import styles from "./styles.module.css";
@@ -12,69 +12,12 @@ import ClueButton from "components/ClueButton";
 import { useErrorServer } from "hooks/useErrorServer";
 import { useGame } from "hooks/useGame";
 import HeadSEO from "components/HeadSEO";
-import { generateClue } from "services/generateClue";
-import Swal from "sweetalert2";
 import GenerateClueButton from "components/GenerateClueButton/GenerateClueButton";
+import { useClue } from "hooks/useClue";
 
 export default function Game({ word = [], title = "", id, numberOfClues = 0, topic = "", isgenerateClue }) {
   useErrorServer({ word });
-
-  const [clue, setClue] = useState(false);
-  const [clueLoading, setClueLoading] = useState(false);
-
-  // useEffect(() => {
-  //   setClueLoading(true);
-  //   async function fetchClue() {
-  //     try {
-  //       // wait 5 seconds to generate clue
-  //       setTimeout(() => {
-  //         setClue("lorem ipsum");
-  //         setClueLoading(false);
-  //         console.log("pista generada");
-  //       }, 5000);
-  //     } catch (error) {
-  //       console.log("Error al generar la pista");
-  //       console.log(error);
-  //       setClueLoading(false);
-  //     }
-  //   }
-  //   fetchClue();
-  // }, []);
-
-  useEffect(() => {
-    setClueLoading(true);
-    async function fetchClue() {
-      try {
-        if (!isgenerateClue && !topic) return;
-        const clueRes = await fetch("/api/getClue", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ word: word.join(""), topic }),
-        });
-        if (!clueRes.status) throw new Error("Error al generar la pista");
-        const clueJson = await clueRes.json();
-        const clue = await clueJson.message;
-        setClue(clue);
-        setClueLoading(false);
-      } catch (error) {
-        console.log("Error al generar la pista");
-        console.log(error);
-        setClueLoading(false);
-      }
-    }
-    fetchClue();
-  }, []);
-
-  // const generateClue = async () => {
-  //   Swal.fire({
-  //     icon: "question",
-  //     title: "Pista",
-  //     text: `${clueLoading ? "La pista estará disponible pronto, vuelva en unos momentos" : clue}`,
-  //   });
-  // };
-
+  const { clue, clueLoading } = useClue({ isgenerateClue, topic, word });
   const { wordState, setWordState, tries, setTries } = useContext(ButtonContext);
   const { t } = useI18N();
   const wordRef = useRef(word);
@@ -145,9 +88,7 @@ export default function Game({ word = [], title = "", id, numberOfClues = 0, top
         <div className={styles.containerUtils}>
           <span className={styles.titleTries}>Intentos: {tries + 1}</span>
           <div className={styles.buttonCluesContainer}>
-            {/* <button onClick={() => generateClue(clueLoading, clue)}>Generate clue</button> */}
             {isgenerateClue ? <GenerateClueButton clue={clue} clueLoading={clueLoading} /> : null}
-            {/* {true ? <GenerateClueButton /> : null} */}
             <ClueButton word={word} numberOfClues={numberOfClues} />
           </div>
         </div>
