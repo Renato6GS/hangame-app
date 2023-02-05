@@ -41,12 +41,13 @@ export const showWinModal = (t, router, word) => {
 };
 
 export const showLoseModal = (t, router, word) => {
+  word = word.join("").replaceAll("_", " ");
   const MySwal = withReactContent(Swal);
   MySwal.fire({
     icon: "error",
     title: t("GAME_OVER"),
     text: t("BETTER_LUCK"),
-    footer: `${t("ANSWER")}: ${word.join("")}`,
+    footer: footerResponse(t, word),
   }).then(() => {
     router.push("/");
   });
