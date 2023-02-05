@@ -14,8 +14,9 @@ import { useGame } from "hooks/useGame";
 import HeadSEO from "components/HeadSEO";
 import { generateClue } from "services/generateClue";
 import Swal from "sweetalert2";
+import GenerateClueButton from "components/GenerateClueButton/GenerateClueButton";
 
-export default function Game({ word = [], title = "", id, numberOfClues = 0, topic = "" }) {
+export default function Game({ word = [], title = "", id, numberOfClues = 0, topic = "", isgenerateClue }) {
   useErrorServer({ word });
 
   const [clue, setClue] = useState(false);
@@ -44,6 +45,7 @@ export default function Game({ word = [], title = "", id, numberOfClues = 0, top
     setClueLoading(true);
     async function fetchClue() {
       try {
+        if (!isgenerateClue && !topic) return;
         const clueRes = await fetch("/api/getClue", {
           method: "POST",
           headers: {
@@ -65,13 +67,13 @@ export default function Game({ word = [], title = "", id, numberOfClues = 0, top
     fetchClue();
   }, []);
 
-  const generateClue = async () => {
-    Swal.fire({
-      icon: "question",
-      title: "Pista",
-      text: `${clueLoading ? "La pista estará disponible pronto, vuelva en unos momentos" : clue}`,
-    });
-  };
+  // const generateClue = async () => {
+  //   Swal.fire({
+  //     icon: "question",
+  //     title: "Pista",
+  //     text: `${clueLoading ? "La pista estará disponible pronto, vuelva en unos momentos" : clue}`,
+  //   });
+  // };
 
   const { wordState, setWordState, tries, setTries } = useContext(ButtonContext);
   const { t } = useI18N();
@@ -142,8 +144,12 @@ export default function Game({ word = [], title = "", id, numberOfClues = 0, top
         {/* UTILS */}
         <div className={styles.containerUtils}>
           <span className={styles.titleTries}>Intentos: {tries + 1}</span>
-          <ClueButton word={word} numberOfClues={numberOfClues} />
-          <button onClick={() => generateClue(clueLoading, clue)}>Generate clue</button>
+          <div className={styles.buttonCluesContainer}>
+            {/* <button onClick={() => generateClue(clueLoading, clue)}>Generate clue</button> */}
+            {isgenerateClue ? <GenerateClueButton clue={clue} clueLoading={clueLoading} /> : null}
+            {/* {true ? <GenerateClueButton /> : null} */}
+            <ClueButton word={word} numberOfClues={numberOfClues} />
+          </div>
         </div>
 
         {/* KEYBOARD */}
@@ -164,13 +170,15 @@ export async function getServerSideProps(context) {
 
   // const { id, topic } = query;
   const { id } = params;
-  const { topic } = query;
+  const { topic = false } = query;
   let wordArray = [];
   let title = "CREATE_WORD_TITLE";
   let word = "";
+  let isgenerateClue = true;
 
   if (id.startsWith("C")) {
     word = offlineService({ id });
+    isgenerateClue = false;
   } else if (id !== "favicon.ico") {
     // HELP: this is a hack to avoid the favicon.ico request lol
     title = "ONE_PLAYER_MAIN_MENU";
@@ -192,6 +200,6 @@ export async function getServerSideProps(context) {
   console.log(topic);
 
   return {
-    props: { word: wordArray, title, id, numberOfClues, topic },
+    props: { word: wordArray, title, id, numberOfClues, topic, isgenerateClue },
   };
 }
