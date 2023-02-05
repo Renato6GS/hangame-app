@@ -34,7 +34,7 @@ export default function ClueButton({ word, numberOfClues }) {
 
   return (
     <Button onClick={giveClue} disabled={clues === 0} addBorder fitContent>
-      Pistas: {clues}
+      {t("CLUE")}s: {clues}
     </Button>
   );
 }

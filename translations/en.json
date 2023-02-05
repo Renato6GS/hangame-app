@@ -85,5 +85,9 @@
   "404_PAGE_NOT_FOUND_DESCRIPTION_3": "As compensation, what do you think if you hit the next button? Maybe it's a vanilla ice cream 🍨?",
   "404_PAGE_NOT_FOUND_BUTTON_YES": "Yes!, but only one 😢? 🍧🍨🍦",
   "404_PAGE_NOT_FOUND_BUTTON_NO": "No, let go of my arm sir 💀",
-  "404_PAGE_NOT_FOUND_LINK": "CU2FsdGVkX1%2BNalzWcwgvZco%2FrSkkDLU%2FvR6VlYV57pA%3D"
+  "404_PAGE_NOT_FOUND_LINK": "CU2FsdGVkX1%2BNalzWcwgvZco%2FrSkkDLU%2FvR6VlYV57pA%3D",
+  "CLUE": "Clue",
+  "LOADING_CLUE": "The track will be available soon, check back in a few moments 💤",
+  "GENERATE_CLUE": "Generate clue",
+  "ATTEMPS": "Attempts"
 }

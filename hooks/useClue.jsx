@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const useClue = ({ isgenerateClue, topic, word }) => {
+export const useClue = ({ isgenerateClue, topic, word, locale }) => {
   const [clue, setClue] = useState(false);
   const [clueLoading, setClueLoading] = useState(false);
 
@@ -14,7 +14,7 @@ export const useClue = ({ isgenerateClue, topic, word }) => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ word: word.join(""), topic }),
+          body: JSON.stringify({ word: word.join(""), topic, locale }),
         });
         if (!clueRes.status) throw new Error("Error al generar la pista");
         const clueJson = await clueRes.json();

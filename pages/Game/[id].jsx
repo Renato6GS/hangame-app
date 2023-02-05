@@ -15,9 +15,9 @@ import HeadSEO from "components/HeadSEO";
 import GenerateClueButton from "components/GenerateClueButton/GenerateClueButton";
 import { useClue } from "hooks/useClue";
 
-export default function Game({ word = [], title = "", id, numberOfClues = 0, topic = "", isgenerateClue }) {
+export default function Game({ word = [], title = "", id, numberOfClues = 0, topic = "", isgenerateClue, locale }) {
   useErrorServer({ word });
-  const { clue, clueLoading } = useClue({ isgenerateClue, topic, word });
+  const { clue, clueLoading } = useClue({ isgenerateClue, topic, word, locale });
   const { wordState, setWordState, tries, setTries } = useContext(ButtonContext);
   const { t } = useI18N();
   const wordRef = useRef(word);
@@ -86,7 +86,9 @@ export default function Game({ word = [], title = "", id, numberOfClues = 0, top
 
         {/* UTILS */}
         <div className={styles.containerUtils}>
-          <span className={styles.titleTries}>Intentos: {tries + 1}</span>
+          <strong className={styles.titleTries}>
+            {t("ATTEMPS")}: {tries + 1}
+          </strong>
           <div className={styles.buttonCluesContainer}>
             {isgenerateClue ? <GenerateClueButton clue={clue} clueLoading={clueLoading} /> : null}
             <ClueButton word={word} numberOfClues={numberOfClues} />
@@ -141,6 +143,6 @@ export async function getServerSideProps(context) {
   console.log(topic);
 
   return {
-    props: { word: wordArray, title, id, numberOfClues, topic, isgenerateClue },
+    props: { word: wordArray, title, id, numberOfClues, topic, isgenerateClue, locale },
   };
 }
