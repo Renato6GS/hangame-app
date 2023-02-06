@@ -7,10 +7,10 @@ import { ArrowNarrowRightIcon } from "components/icons";
 export default function LinkToPage({ contain, href = "/", center = true, locale }) {
   return (
     <Link href={href} passHref locale={locale}>
-      <div className={`${styles.anchorContainer} ${center ? styles.positionCenter : styles.positionRigth}`}>
-        <a className={styles.link}>{contain}</a>
+      <a className={`${styles.anchorContainer} ${center ? styles.positionCenter : styles.positionRigth}`}>
+        <span className={styles.link}>{contain}</span>
         <ArrowNarrowRightIcon />
-      </div>
+      </a>
     </Link>
   );
 }

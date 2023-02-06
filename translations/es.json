@@ -1,4 +1,5 @@
 {
+  "LOCALE": "es",
   "SEO_DEFAULT_TITLE": "Hangame - Juego del ahorcado",
   "SEO_MAIN_MENU": "Hangame - Menu",
   "SEO_ONE_PLAYER": "Hangame - Un solo jugador",
@@ -89,5 +90,12 @@
   "CLUE": "Pista",
   "LOADING_CLUE": "La pista estará disponible pronto, vuelva en unos momentos 💤",
   "GENERATE_CLUE": "Generar pista",
-  "ATTEMPS": "Intentos"
+  "ATTEMPS": "Intentos",
+  "ACHIEVEMENTS": "Logros",
+  "RESET_ACHIEVEMENTS": "Reiniciar logros",
+  "RESET_ACHIEVEMENTS_SUCCESS": "Logros reiniciados",
+  "LIST_ACHIEVEMENTS": "Listado de logros",
+  "COMPLETED": "Completado",
+  "INCOMPLETED": "Sin completar",
+  "LOADING": "Cargando"
 }
