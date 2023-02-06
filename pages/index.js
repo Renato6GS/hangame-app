@@ -5,9 +5,12 @@ import LayoutButton from "components/LayoutButton";
 import LinkToPage from "components/LinkToPage";
 import { useI18N } from "context/i18n";
 import HeadSEO from "components/HeadSEO";
+import { useAchievements } from "hooks/useAchievements";
 
 export default function Home() {
   const { t } = useI18N();
+  useAchievements();
+
   return (
     <div className={styles.container}>
       <HeadSEO title={"SEO_MAIN_MENU"} description="The best Hangman game" />
