@@ -1,3 +1,4 @@
+import confetti from "canvas-confetti";
 import { ACHIEVEMENTS } from "constants/ACHIEVEMENTS";
 import { useEffect } from "react";
 import Swal from "sweetalert2";
@@ -8,11 +9,14 @@ export const useAchievements = () => {
       // achievements
       if (localStorage.getItem("achievements") === null) {
         localStorage.setItem("achievements", JSON.stringify(ACHIEVEMENTS));
+        localStorage.setItem("wins", 0);
+        localStorage.setItem("loses", 0);
       } else {
         const achievements = JSON.parse(localStorage.getItem("achievements"));
 
         for (let i = 0; i < achievements.length; i++) {
-          if (achievements[i].completed === true) {
+          if (achievements[i].completed === true && achievements[i].disabled === false) {
+            confetti();
             await Swal.fire({
               title: achievements[i].name,
               text: achievements[i].text,
@@ -20,7 +24,10 @@ export const useAchievements = () => {
               imageWidth: 400,
               imageHeight: 200,
               imageAlt: "Custom image",
-            }).then(() => {});
+            }).then(() => {
+              achievements[i].disabled = true;
+              localStorage.setItem("achievements", JSON.stringify(achievements));
+            });
           }
         }
 

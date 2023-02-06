@@ -2,6 +2,16 @@ import confetti from "canvas-confetti";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { Howl } from "howler";
+import {
+  firstLose,
+  firstWin,
+  roadToHero,
+  secretAchievement404,
+  sumLose,
+  sumWin,
+  threeLosesInARow,
+  threeWinsInARow,
+} from "./handleAchievements";
 
 export const showModal = async ({ type = "success", title = "Emtpy title", message = "Empty message" }) => {
   const MySwal = withReactContent(Swal);
@@ -39,6 +49,11 @@ export const footerResponse = (t, word) => {
 
 export const showWinModal = (t, router, word) => {
   word = word.join("").replaceAll("_", " ");
+  firstWin();
+  sumWin();
+  threeWinsInARow();
+  roadToHero();
+  secretAchievement404({ word });
   confetti();
   const sound = new Howl({ src: "/sounds/you-win-monkey-island.mp3", volume: 0.8 });
   sound.play();
@@ -54,6 +69,10 @@ export const showWinModal = (t, router, word) => {
 };
 
 export const showLoseModal = (t, router, word) => {
+  firstLose();
+  sumLose();
+  threeLosesInARow();
+
   word = word.join("").replaceAll("_", " ");
   const MySwal = withReactContent(Swal);
   const sound = new Howl({ src: "/sounds/you-lost.mp3", volume: 0.3 });

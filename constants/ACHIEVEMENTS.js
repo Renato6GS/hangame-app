@@ -6,6 +6,7 @@ export const ACHIEVEMENTS = [
     description: "Win a game",
     text: "You won your first game",
     imageUrl: "/achievements/first-win.svg",
+    disabled: false,
   },
   {
     completed: false,
@@ -14,6 +15,7 @@ export const ACHIEVEMENTS = [
     description: "Lose a game",
     text: "You lost your first game",
     imageUrl: "/achievements/first-lose.svg",
+    disabled: false,
   },
   {
     completed: false,
@@ -22,6 +24,7 @@ export const ACHIEVEMENTS = [
     description: "Win 3 games in a row",
     text: "You won 3 games in a row",
     imageUrl: "/achievements/3-wins-in-a-row.svg",
+    disabled: false,
   },
   {
     completed: false,
@@ -30,6 +33,7 @@ export const ACHIEVEMENTS = [
     description: "Lose 3 games in a row",
     text: "You lost 3 games in a row",
     imageUrl: "/achievements/3-loses-in-a-row.svg",
+    disabled: false,
   },
   {
     completed: false,
@@ -38,6 +42,7 @@ export const ACHIEVEMENTS = [
     description: "lose a game and then win one",
     text: "You lost a game and then won one",
     imageUrl: "/achievements/road-to-hero.svg",
+    disabled: false,
   },
   {
     completed: false,
@@ -46,5 +51,6 @@ export const ACHIEVEMENTS = [
     description: "Secret achievement",
     text: "You found a secret achievement",
     imageUrl: "/achievements/404-achievement.svg",
+    disabled: false,
   },
 ];
