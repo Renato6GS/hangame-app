@@ -7,13 +7,23 @@
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
+  border: 2px solid transparent;
+  transition: 0.3s ease-in-out border-color, 0.3s ease-in-out padding-left, 0.3s ease-in-out padding-right;
+}
+
+@media (hover: hover) {
+  .anchorContainer:hover {
+    border-color: black;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
 
 .link {
   color: var(--secondary-color);
   font-family: Roboto, sans-serif;
   font-weight: 400;
-  cursor: pointer
+  cursor: pointer;
 }
 
 .positionCenter {
