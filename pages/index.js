@@ -22,6 +22,7 @@ export default function Home() {
           <LayoutButton>
             <LinkToPage contain={t("ONE_PLAYER_MAIN_MENU")} href="/OnePlayer" />
             <LinkToPage contain={t("CREATE_WORD")} href="/CreateWord" />
+            <LinkToPage contain={"Logros"} href="/Achievements" />
             <LinkToPage contain={t("CHANGE_LANGUAGE")} href="/ChangeLanguage" />
           </LayoutButton>
         </section>

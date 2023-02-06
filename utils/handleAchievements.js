@@ -3,7 +3,7 @@ export const sumWin = () => {
   localStorage.setItem("wins", JSON.stringify(wins + 1));
 
   const roadToHero = JSON.parse(localStorage.getItem("roadToHero"));
-  if (roadToHero.lose) {
+  if (roadToHero?.lose) {
     localStorage.setItem("roadToHero", JSON.stringify({ lose: true, win: true }));
   }
 
@@ -61,7 +61,7 @@ export const roadToHero = () => {
   const achievements = JSON.parse(localStorage.getItem("achievements"));
   if (achievements[id - 1].completed) return;
   const roadToHero = JSON.parse(localStorage.getItem("roadToHero"));
-  if (!roadToHero.lose || !roadToHero.win) return;
+  if (!roadToHero?.lose || !roadToHero?.win) return;
   achievements[id - 1].completed = true;
   localStorage.setItem("achievements", JSON.stringify(achievements));
 };

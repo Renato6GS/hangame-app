@@ -39,7 +39,7 @@ export const ACHIEVEMENTS = [
     completed: false,
     id: 5,
     name: "Road to hero",
-    description: "lose a game and then win one",
+    description: "Lose a game and then win one",
     text: "You lost a game and then won one",
     imageUrl: "/achievements/road-to-hero.svg",
     disabled: false,
