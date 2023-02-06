@@ -125,7 +125,7 @@
     -1.2px 9px 10.2px -2.5px hsl(var(--shadow-color) / 0.34);
   box-shadow: var(--shadow-elevation-high);
   background-color: rgb(225, 243, 233);
-  border-radius: 6px;
+  border-radius: 12px;
   position: sticky;
   top: 20px;
 }

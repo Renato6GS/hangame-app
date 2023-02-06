@@ -9,10 +9,50 @@
   justify-content: flex-end;
   border-radius: 40px;
   margin-top: auto;
+  margin-bottom: 0.7rem;
 }
 
 .link {
   color: var(--link-color);
   font-family: Roboto, sans-serif;
   font-weight: bold;
+  margin: 0 auto;
+  margin-top: 1rem;
+}
+
+.tagsContainer {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.tag {
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  --shadow-color: 0deg 0% 63%;
+  --shadow-elevation-high: 0px 0.1px 0.1px hsl(var(--shadow-color) / 0.34),
+    -0.1px 0.5px 0.6px -0.4px hsl(var(--shadow-color) / 0.34), -0.1px 1px 1.1px -0.7px hsl(var(--shadow-color) / 0.34),
+    -0.2px 1.6px 1.8px -1.1px hsl(var(--shadow-color) / 0.34), -0.3px 2.6px 2.9px -1.4px hsl(var(--shadow-color) / 0.34),
+    -0.5px 4px 4.5px -1.8px hsl(var(--shadow-color) / 0.34), -0.8px 6.1px 6.9px -2.1px hsl(var(--shadow-color) / 0.34),
+    -1.2px 9px 10.2px -2.5px hsl(var(--shadow-color) / 0.34);
+  box-shadow: var(--shadow-elevation-high);
+  padding: 10px 8px;
+  border-radius: 16px;
+  font-size: 0.9rem;
+  transition: 0.3s ease-in-out transform;
+}
+
+@media (hover: hover) {
+  .tag:hover {
+    transform: translateY(2px);
+    background-color: #f4f2f2;
+  }
 }
