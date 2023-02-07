@@ -19,6 +19,6 @@ test("create a new game with a custom word", async ({ page }) => {
 test("share a word with empty field", async ({ page }) => {
   await page.goto("https://www.hangame.app/");
   await page.getByRole("link", { name: "Create word" }).click();
-  await page.getByRole("button", { name: "Compartir" }).click();
+  await page.getByRole("button", { name: "Share" }).click();
   await page.getByRole("heading", { name: "Empty field" }).click();
 });
