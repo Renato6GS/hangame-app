@@ -1,0 +1,32 @@
+import { test } from "@playwright/test";
+
+test("testing alphabet", async ({ page }) => {
+  await page.goto("https://www.hangame.app/Game/CU2FsdGVkX18h9cAkXyk6BB03BXXK1YKeP16qZSSvhnSBdV9IZ%2FJnE14NLaj6G2w3");
+  await page.getByRole("button", { name: "A" }).click();
+  await page.getByRole("button", { name: "B" }).click();
+  await page.getByRole("button", { name: "C", exact: true }).click();
+  await page.getByRole("button", { name: "D" }).click();
+  await page.getByRole("button", { name: "E", exact: true }).click();
+  await page.getByRole("button", { name: "F" }).click();
+  await page.getByRole("button", { name: "G" }).click();
+  await page.getByRole("button", { name: "H" }).click();
+  await page.getByRole("button", { name: "I" }).click();
+  await page.getByRole("button", { name: "J" }).click();
+  await page.getByRole("button", { name: "K" }).click();
+  await page.getByRole("button", { name: "L", exact: true }).click();
+  await page.getByRole("button", { name: "M" }).click();
+  await page.getByRole("button", { name: "N" }).click();
+  await page.getByRole("button", { name: "Ñ" }).click();
+  await page.getByRole("button", { name: "O" }).click();
+  await page.getByRole("button", { name: "P" }).click();
+  await page.getByRole("button", { name: "Q" }).click();
+  await page.getByRole("button", { name: "R" }).click();
+  await page.getByRole("button", { name: "S", exact: true }).click();
+  await page.getByRole("button", { name: "T" }).click();
+  await page.getByRole("button", { name: "U", exact: true }).click();
+  await page.getByRole("button", { name: "V" }).click();
+  await page.getByRole("button", { name: "W" }).click();
+  await page.getByRole("button", { name: "X" }).click();
+  await page.getByRole("button", { name: "Y" }).click();
+  await page.getByRole("button", { name: "Z" }).click();
+});
