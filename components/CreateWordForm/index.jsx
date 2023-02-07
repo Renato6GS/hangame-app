@@ -95,8 +95,8 @@ export default function CreateWordForm() {
     const encodeWord = encodeURIComponent(ciphertext.toString());
     try {
       await navigator.share({
-        title: "Adivina la palabra",
-        text: "Juega adivina la palabra conmigo",
+        title: t("SHARE_TITLE"),
+        text: t("SHARE_TEXT"),
         url: `https://www.hangame.app/Game/C${encodeWord}`,
       });
     } catch (error) {
@@ -125,7 +125,7 @@ export default function CreateWordForm() {
           <ArrowNarrowRightIcon />
         </Button>
         <Button onClick={handleShare}>
-          <span className={styles.buttonContent}>Compartir</span>
+          <span className={styles.buttonContent}>{t("SHARE")}</span>
           <ShareIcon />
         </Button>
       </div>

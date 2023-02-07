@@ -97,5 +97,8 @@
   "LIST_ACHIEVEMENTS": "Listado de logros",
   "COMPLETED": "Completado",
   "INCOMPLETED": "Sin completar",
-  "LOADING": "Cargando"
+  "LOADING": "Cargando",
+  "SHARE": "Compartir",
+  "SHARE_TITLE": "¡¡¡Juega a Hangame!!!",
+  "SHARE_TEXT": "Adivina la palabra oculta en el juego del ahorcado"
 }

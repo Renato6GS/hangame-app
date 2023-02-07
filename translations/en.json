@@ -97,5 +97,8 @@
   "LIST_ACHIEVEMENTS": "List of achievements",
   "COMPLETED": "Completed",
   "INCOMPLETED": "Incompleted",
-  "LOADING": "Loading"
+  "LOADING": "Loading",
+  "SHARE": "Share",
+  "SHARE_TITLE": "Play Hangame!!!",
+  "SHARE_TEXT": "Guess the hidden word in the hangman game"
 }
