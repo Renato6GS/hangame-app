@@ -19,15 +19,15 @@ export default function Footer() {
         </a>
       </h4>
       <section className={styles.tagsContainer}>
-        <a className={styles.tag} href="https://www.mongodb.com/" target={"_blank"} rel="noreferrer">
+        <a className={styles.tag} href="https://nextjs.org/" target={"_blank"} rel="noreferrer">
           <NextIcon />
           Next.js
         </a>
-        <a className={styles.tag} href="https://cohere.ai/" target={"_blank"} rel="noreferrer">
+        <a className={styles.tag} href="https://www.mongodb.com/" target={"_blank"} rel="noreferrer">
           <MongoDbIcon />
           MongoDB
         </a>
-        <a className={styles.tag}>
+        <a className={styles.tag} href="https://cohere.ai/" target={"_blank"} rel="noreferrer">
           <CohereIcon />
           Co:here
         </a>
